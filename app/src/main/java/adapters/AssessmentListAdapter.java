@@ -45,12 +45,6 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
         holder.columnAssType.setText(this.assessmentList.get(position).assType.name());
         holder.columnAssStart.setText(this.assessmentList.get(position).startDate.format(formatter));
         holder.columnAssEnd.setText(this.assessmentList.get(position).endDate.format(formatter));
-
-    }
-
-    private void toItem(int p) {
-        Intent intent = new Intent(context, AssessmentDetail.class);
-        context.startActivity(intent);
     }
 
     @Override
@@ -83,6 +77,7 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
         }
 
     }
+
         public interface OnAssessmentListener {
         void onAssessmentClick(int position);
     }

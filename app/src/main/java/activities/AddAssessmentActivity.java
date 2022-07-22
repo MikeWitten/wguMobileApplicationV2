@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.wittenPortfolio.R;
 
+import java.lang.annotation.Target;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Objects;
@@ -182,11 +183,37 @@ public class AddAssessmentActivity extends AppCompatActivity {
             default:
                 assType = AssessmentType.Test;
         }
+        //Check that all fields are filled out.
+        if (isNull()){
+            return;
+        }
         Assessment newAssessment = new Assessment(assID, classID, assTitle, assType, startDate, endDate);
         db.AssessmentDAO().insertAll(newAssessment);
         Toast.makeText(this, "Assessment Added", Toast.LENGTH_SHORT).show();
+        //Send user back to previous screen.
         Intent intent = new Intent(AddAssessmentActivity.this, AssessmentList.class);
         startActivity(intent);
+    }
+
+    private boolean isNull() {
+        if(className.isEmpty()){
+            Toast.makeText(this, "You must select a class for your assessment", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if(assTitle.isEmpty()){
+            Toast.makeText(this, "You must give your assessment a name", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if (startDate == null){
+            Toast.makeText(this, "You must select a start date", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if (endDate == null){
+            Toast.makeText(this, "You must select an end date", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else
+            return false;
     }
 
 

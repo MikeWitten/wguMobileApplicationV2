@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toTermsView(View view) {
+        Intent intent = new Intent(MainActivity.this, TermsList.class);
+        startActivity(intent);
     }
 
     public void toCoursesView(View view) {

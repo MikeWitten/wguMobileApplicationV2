@@ -16,6 +16,10 @@
         android:theme="@style/Theme.WguMobileApplication"
         tools:targetApi="31">
         <activity
+            android:name="activities.AddTermActivity"
+            android:exported="false"
+            android:parentActivityName="activities.TermsList"/>
+        <activity
             android:name="activities.TermsList"
             android:exported="false"
             android:parentActivityName="activities.MainActivity" />
@@ -44,9 +48,7 @@
         <receiver
             android:name="utilities.MyBroadcastReceiver"
             android:enabled="true"
-            android:exported="true">
-
-        </receiver>
+            android:exported="true"></receiver>
     </application>
 
 </manifest>

@@ -53,7 +53,6 @@ public class AssessmentList extends AppCompatActivity implements AssessmentListA
     @Override
     public void onAssessmentClick(int position) {
         Assessment a = assessments.get(position);
-        System.out.println("title = " + a.assTitle);
         Intent intent = new Intent(AssessmentList.this, activities.AssessmentDetail.class);
         intent.putExtra ("assessment", a);
         startActivity(intent);

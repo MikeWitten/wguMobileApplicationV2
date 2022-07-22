@@ -25,6 +25,7 @@
         android:onClick="toAddAssessmentView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/add"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
