@@ -1,11 +1,14 @@
 package entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "mentors")
-public class Mentor {
+public class Mentor implements Parcelable {
 
     @PrimaryKey (autoGenerate = true)
     public Integer id;
@@ -22,6 +25,29 @@ public class Mentor {
         this.phone = phone;
         this.email = email;
     }
+
+    protected Mentor(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        name = in.readString();
+        phone = in.readString();
+        email = in.readString();
+    }
+
+    public static final Creator<Mentor> CREATOR = new Creator<Mentor>() {
+        @Override
+        public Mentor createFromParcel(Parcel in) {
+            return new Mentor(in);
+        }
+
+        @Override
+        public Mentor[] newArray(int size) {
+            return new Mentor[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -57,10 +83,24 @@ public class Mentor {
 
     @Override
     public String toString() {
-        return "Mentor{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Mentor: " + "name= " + name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(name);
+        dest.writeString(phone);
+        dest.writeString(email);
     }
 }

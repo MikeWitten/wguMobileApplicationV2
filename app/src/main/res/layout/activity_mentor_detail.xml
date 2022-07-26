@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context="activities.MentorDetail">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
+    <TextView
+        android:id="@+id/textView1000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mentor Details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="15sp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/tvMentorName"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="15sp"
+        android:text="Name"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/textView1000"
+        />
+
+    <TextView
+        android:id="@+id/tvMentorPhone"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="15sp"
+        android:text="Phone"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvMentorName"
+        />
+
+    <TextView
+        android:id="@+id/tvMentorEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="15sp"
+        android:text="Email"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvMentorPhone"
+        />
+
+    <Button
+        android:id="@+id/deleteMentorBTN"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="100sp"
+        android:text="Delete Mentor"
+        />
+
+    <TextView
+        android:id="@+id/textViewAboveList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvMentorEmail"
+        android:text="This Mentor Teaches the following courses"
+        android:gravity="center"
+        android:layout_margin="15sp"
+        />
+
+    <ListView
+        android:id="@+id/associatedClassListView"
+        android:layout_width="match_parent"
+        android:layout_height="175sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewAboveList"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        app:layout_constraintBottom_toTopOf="@id/deleteMentorBTN"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

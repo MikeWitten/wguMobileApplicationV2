@@ -52,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toMentorsView(View view) {
+        Intent intent = new Intent(MainActivity.this, MentorList.class);
+        startActivity(intent);
     }
 
-    public void populateTestData(MenuItem item) throws InterruptedException {
+    public void populateTestData(MenuItem item) {
         System.out.println("testing" );
         AppDatabase db= AppDatabase.getDbInstance(this.getApplicationContext());
         //empty database
@@ -118,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
                 AssessmentType.Project, firstStart, firstEnd);
         Assessment ddd = new Assessment(null, 1, "Practical: Winguardium Levi'osa",
                 AssessmentType.Practical, firstStart, firstEnd);
-
+        Assessment ppp = new Assessment(null,7, "Petting Flying Cats",
+                AssessmentType.Paper, secondStart, secondEnd);
         Assessment eee = new Assessment(null, 9, "Manly Grooming Exam",
                 AssessmentType.Test, thirdStart, thirdEnd);
         Assessment fff = new Assessment(null, 9,
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Add test data to the database.
         db.courseDAO().insertAll(aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,mm);
-        db.AssessmentDAO().insertAll(aaa,bbb,ccc,ddd,eee,fff);
+        db.AssessmentDAO().insertAll(aaa,bbb,ccc,ddd,eee,fff,ppp);
         db.termDAO().insertAll(a,b,c,d);
         db.mentorDAO().insertAll(dumbledore, mcGonagall, hagrid, snape);
         db.noteDAO().insertAll(abc,def);

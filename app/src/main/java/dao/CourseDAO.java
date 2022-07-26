@@ -37,4 +37,8 @@ public interface CourseDAO {
     @Query("SELECT * FROM courses WHERE termID IS :id")
     List<Course> getAssociatedCourses(int id);
 
+    @Query("DELETE FROM courses WHERE mentorID IS :id")
+    void deleteMentorCourses(Integer id);
+
+
 }

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="activities.AssessmentDetail">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
     <EditText
         android:id="@+id/assTitleET"
         android:layout_width="match_parent"
@@ -15,7 +25,7 @@
         android:hint="Title"
         android:textColor="@color/black"
         android:inputType="none"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         />
 
     <TextView
@@ -114,14 +124,22 @@
     <Button
         android:id="@+id/alarmBTN"
         android:layout_width="155dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="75dp"
+        android:layout_height="75sp"
+        android:layout_marginTop="50sp"
         android:text="set an Alarm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveBTN"
-        />
+        android:layout_marginStart="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/saveBTN" />
+
+    <Button
+        android:id="@+id/deleteAssessmentBTN"
+        android:layout_width="155dp"
+        android:layout_height="75sp"
+        android:layout_marginTop="50sp"
+        android:text="Delete Assessment"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/saveBTN" />
 
     <Button
         android:id="@+id/cancelAlarmBTN"

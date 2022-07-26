@@ -7,6 +7,16 @@
     tools:context="activities.AddTermActivity"
     android:layout_gravity="center">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
     <EditText
         android:id="@+id/termNameInput"
         android:layout_width="match_parent"
@@ -15,7 +25,7 @@
         android:gravity="center"
         android:hint="Enter a Term Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         />
 
     <Button

@@ -55,6 +55,7 @@ public class AssessmentDetail extends AppCompatActivity {
     String[] courses;
     String[] types;
     List<Course> courseList;
+    boolean courseExists;
     Course currentCourse = null;
     AlertDialog courseDialog;
     AlertDialog typeDialog;
@@ -83,7 +84,20 @@ public class AssessmentDetail extends AppCompatActivity {
         alarmIntent = new Intent(this, MyBroadcastReceiver.class);
         //set the fields to represent the assessment object.
         setFields();
+        //Check for valid class.
+        checkForValidClass();
     }
+
+    private void checkForValidClass() {
+        if(!courseExists){
+            db.AssessmentDAO().delete(assessment);
+            Toast.makeText(this, "Sorry, this course no longer exists.", Toast.LENGTH_SHORT).show();
+            //Return to Assessment List
+            Intent intent = new Intent(AssessmentDetail.this, AssessmentList.class);
+            startActivity(intent);
+        }
+    }
+
 
     private void setFields() {
         //Title
@@ -290,11 +304,14 @@ public class AssessmentDetail extends AppCompatActivity {
     }
 
     private void populateCourseSpinner() {
+        //set value for boolean.
+        courseExists = false;
         //Find the current course association.
         courseList = db.courseDAO().getAllCourses();
         for (Course c : courseList) {
             if (assessment.classID == c.courseID) {
                 currentCourse = c;
+                courseExists = true;
             }
         }
         if (currentCourse == null) {
