@@ -9,6 +9,7 @@ import androidx.room.Update;
 import java.util.List;
 
 import entities.Course;
+import entities.Term;
 
 @Dao
 public interface CourseDAO {
@@ -32,4 +33,8 @@ public interface CourseDAO {
 
     @Delete
     void delete(Course course);
+
+    @Query("SELECT * FROM courses WHERE termID IS :id")
+    List<Course> getAssociatedCourses(int id);
+
 }

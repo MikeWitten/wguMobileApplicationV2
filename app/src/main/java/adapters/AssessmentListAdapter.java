@@ -17,7 +17,7 @@ import java.util.List;
 
 import activities.AssessmentDetail;
 import entities.Assessment;
-
+//Create an adapter for the recycler view.
 public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAdapter.assessmentsViewHolder> {
 
     private Context context;
@@ -75,7 +75,6 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
             onAssessmentListener.onAssessmentClick(getAdapterPosition());
 
         }
-
     }
 
         public interface OnAssessmentListener {

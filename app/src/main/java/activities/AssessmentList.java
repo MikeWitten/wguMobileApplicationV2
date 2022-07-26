@@ -17,7 +17,7 @@ import java.util.Objects;
 import adapters.AssessmentListAdapter;
 import database.AppDatabase;
 import entities.Assessment;
-
+//This class implements a listener to allow the user to select a list item in the recycler view.
 public class AssessmentList extends AppCompatActivity implements AssessmentListAdapter.OnAssessmentListener {
     private AssessmentListAdapter assessmentListAdapter;
     List<Assessment> assessments;
@@ -48,7 +48,6 @@ public class AssessmentList extends AppCompatActivity implements AssessmentListA
         Intent intent = new Intent(AssessmentList.this, activities.AddAssessmentActivity.class);
         startActivity(intent);
     }
-
 
     @Override
     public void onAssessmentClick(int position) {

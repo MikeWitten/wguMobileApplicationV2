@@ -16,9 +16,43 @@
         android:theme="@style/Theme.WguMobileApplication"
         tools:targetApi="31">
         <activity
+            android:name="activities.MentorAdd"
+            android:exported="false"
+            android:parentActivityName="activities.MentorList"/>
+        <activity
+            android:name="activities.MentorDetail"
+            android:exported="false"
+            android:parentActivityName="activities.MentorList"/>
+        <activity
+            android:name="activities.MentorList"
+            android:exported="false"
+            android:parentActivityName="activities.MainActivity"/>
+        <activity
+            android:name="activities.NoteDetail"
+            android:exported="false" />
+        <activity
+            android:name="activities.NoteAdd"
+            android:exported="false" />
+        <activity
+            android:name="activities.CourseAdd"
+            android:exported="false"
+            android:parentActivityName="activities.CourseList"/>
+        <activity
+            android:name="activities.CourseList"
+            android:exported="false"
+            android:parentActivityName="activities.MainActivity"/>
+        <activity
+            android:name="activities.CourseDetail"
+            android:exported="false"
+            android:parentActivityName="activities.CourseList"/>
+        <activity
+            android:name="activities.TermDetails"
+            android:exported="false"
+            android:parentActivityName="activities.TermsList" />
+        <activity
             android:name="activities.AddTermActivity"
             android:exported="false"
-            android:parentActivityName="activities.TermsList"/>
+            android:parentActivityName="activities.TermsList" />
         <activity
             android:name="activities.TermsList"
             android:exported="false"
@@ -48,7 +82,7 @@
         <receiver
             android:name="utilities.MyBroadcastReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
     </application>
 
 </manifest>

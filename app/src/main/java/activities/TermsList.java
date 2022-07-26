@@ -51,8 +51,13 @@ public class TermsList extends AppCompatActivity implements TermListAdapter.OnTe
     //Send user to the details page.
     @Override
     public void onTermClick(int position) {
-       Term t = terms.get(position);
-        Toast.makeText(this, t.termName.toString(), Toast.LENGTH_SHORT).show();
+        Term t = terms.get(position);
+       Intent intent = new Intent(TermsList.this, TermDetails.class);
+       intent.putExtra("term", t);
+       startActivity(intent);
+
+       //FIXME do more here
+
 
 
     }
