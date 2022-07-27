@@ -1,10 +1,12 @@
 package activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +35,7 @@ public class TermDetails extends AppCompatActivity implements AssociatedCoursesA
     TextView termName;
     TextView termStart;
     TextView termEnd;
+    Button deleteTermBtn;
     RecyclerView    associatedClassesRecyclerView;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -53,6 +56,49 @@ public class TermDetails extends AppCompatActivity implements AssociatedCoursesA
         setUpFloatingButton();
         //Initialize the recycler view.
         initRecyclerView();
+        //Set up the delete button.
+        setUpDeleteButton();
+    }
+
+    private void setUpDeleteButton() {
+        deleteTermBtn = findViewById(R.id.deleteTermButton);
+        deleteTermBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Confirm the delete with the user.
+                AlertDialog.Builder builder = new AlertDialog.Builder(TermDetails.this);
+                builder.setCancelable(true);
+                builder.setTitle("Are You Sure?");
+                builder.setMessage("Deleting a term will Delete all associated courses within the term\n" +
+                        "\n" +
+                        "We recommend updating course information before deleting a Term.\n" +
+                        "\n" +
+                        "Would you like to continue?");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Delete associated courses.
+                                db.courseDAO().deleteTermCourses(term.getTermID());
+                                //Delete the Term
+                                db.termDAO().delete(term);
+                                //Return to Terms list.
+                                Intent intent = new Intent(TermDetails.this, TermsList.class);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Return without doing anything.
+                        return;
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
     }
 
     private void initRecyclerView() {

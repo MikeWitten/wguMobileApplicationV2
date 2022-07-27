@@ -17,7 +17,7 @@ import java.util.List;
 
 import activities.AssessmentDetail;
 import entities.Assessment;
-//Create an adapter for the recycler view.
+
 public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAdapter.assessmentsViewHolder> {
 
     private Context context;
@@ -25,6 +25,9 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
     private OnAssessmentListener mOnAssessmentListener;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
+    /**
+     * Create a constructor for the adapter.
+     */
     public AssessmentListAdapter(Context context, List<Assessment> assessmentList, OnAssessmentListener onAssessmentListener) {
         this.context = context;
         this.assessmentList = assessmentList;
@@ -35,7 +38,7 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
     @Override
     public assessmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.assessment_recycler_row, parent, false);
-
+        //Pass the listener with the view.
         return new assessmentsViewHolder(view, mOnAssessmentListener);
     }
 

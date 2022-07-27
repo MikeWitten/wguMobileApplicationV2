@@ -45,6 +45,7 @@ public class AssessmentDetail extends AppCompatActivity {
     Button cancelBtn;
     Button alarmBtn;
     Button cancelAlarmBtn;
+    Button deleteAssessmentBtn;
     TextView alarmConfirmationTv;
     AppDatabase db;
     Integer assID;
@@ -80,16 +81,52 @@ public class AssessmentDetail extends AppCompatActivity {
         //Get Object from intent extra.
         assessment = getIntent().getExtras().getParcelable("assessment");
         //set up an alarm manager and intent.
-        alarmManager  = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmIntent = new Intent(this, MyBroadcastReceiver.class);
         //set the fields to represent the assessment object.
         setFields();
         //Check for valid class.
         checkForValidClass();
+        //Set up delete button
+        setUpDeleteButton();
+    }
+
+    private void setUpDeleteButton() {
+        deleteAssessmentBtn = findViewById(R.id.deleteAssessmentBTN);
+        deleteAssessmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Confirm the delete with the user.
+                AlertDialog.Builder builder = new AlertDialog.Builder(AssessmentDetail.this);
+                builder.setCancelable(true);
+                builder.setTitle("Are You Sure?");
+                builder.setMessage("Would you like to delete this assesment?");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Delete the assessment
+                                db.AssessmentDAO().delete(assessment);
+                                //Return to assessments list
+                                Intent intent = new Intent(AssessmentDetail.this, AssessmentList.class);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Return without doing anything.
+                        return;
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     private void checkForValidClass() {
-        if(!courseExists){
+        if (!courseExists) {
             db.AssessmentDAO().delete(assessment);
             Toast.makeText(this, "Sorry, this course no longer exists.", Toast.LENGTH_SHORT).show();
             //Return to Assessment List
@@ -136,8 +173,8 @@ public class AssessmentDetail extends AppCompatActivity {
         alarmSet = PendingIntent.getBroadcast(this,
                 assessment.assID,
                 alarmIntent,
-                PendingIntent.FLAG_NO_CREATE) !=null;
-        if(alarmSet){
+                PendingIntent.FLAG_NO_CREATE) != null;
+        if (alarmSet) {
             //Show the cancel button instead of the set alarm button.
             cancelAlarmBtn.setVisibility(View.VISIBLE);
             alarmBtn.setVisibility(View.GONE);
@@ -152,8 +189,7 @@ public class AssessmentDetail extends AppCompatActivity {
                     alarmIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
             cancelAlarm(pendingIntentStart, pendingIntentEnd);
-        }
-        else{
+        } else {
             alarmButtonSetup();
         }
     }
@@ -167,7 +203,7 @@ public class AssessmentDetail extends AppCompatActivity {
                 alarmManager.cancel(pendingIntentEnd);
                 pendingIntentStart.cancel();
                 pendingIntentEnd.cancel();
-               alarmBtnCheck();
+                alarmBtnCheck();
             }
         });
     }
@@ -184,17 +220,17 @@ public class AssessmentDetail extends AppCompatActivity {
                 //Set Calender for start date alarm
                 int year = assessment.startDate.getYear();
                 int month = assessment.startDate.getMonthValue();
-                int day   = assessment.startDate.getDayOfMonth();
-                int hour  = 16;
-                int minute=55;
+                int day = assessment.startDate.getDayOfMonth();
+                int hour = 16;
+                int minute = 55;
                 Calendar startCal = Calendar.getInstance();
                 startCal.set(year, month - 1, day, hour, minute);
                 //Set Calender for end date alarm
                 int endY = assessment.endDate.getYear();
                 int endM = assessment.endDate.getMonthValue();
-                int endD   = assessment.endDate.getDayOfMonth();
+                int endD = assessment.endDate.getDayOfMonth();
                 Calendar endCal = Calendar.getInstance();
-                endCal.set(endY,endM -1, endD, hour, minute);
+                endCal.set(endY, endM - 1, endD, hour, minute);
                 //Pass the Long value of the calendars to the 'setAlarm' method.
                 setAlarm(startCal.getTimeInMillis(), endCal.getTimeInMillis());
             }
@@ -213,7 +249,7 @@ public class AssessmentDetail extends AppCompatActivity {
                 assessment.assID + 10000,
                 alarmIntent,
                 0);
-        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endTimeInMillis,pendingIntentEnd);
+        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endTimeInMillis, pendingIntentEnd);
 
         //Confirm the alarm action.
         Toast.makeText(this, "Alarm Set to 6AM on the Start and End dates.", Toast.LENGTH_SHORT).show();
@@ -237,12 +273,12 @@ public class AssessmentDetail extends AppCompatActivity {
                 //Create a dialog.
                 datePickerDialog = new DatePickerDialog(AssessmentDetail.this,
                         new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        endDate = LocalDate.of(year, (month + 1), dayOfMonth);
-                        endDateSelector.setText((month + 1) + "/" + dayOfMonth + "/" + year);
-                    }
-                }, year, month, day);
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                endDate = LocalDate.of(year, (month + 1), dayOfMonth);
+                                endDateSelector.setText((month + 1) + "/" + dayOfMonth + "/" + year);
+                            }
+                        }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -266,12 +302,12 @@ public class AssessmentDetail extends AppCompatActivity {
                 //Create a dialog.
                 datePickerDialog = new DatePickerDialog(AssessmentDetail.this,
                         new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        startDate = LocalDate.of(year, (month + 1), dayOfMonth);
-                        startDateSelector.setText((month + 1) + "/" + dayOfMonth + "/" + year);
-                    }
-                }, year, month, day);
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                startDate = LocalDate.of(year, (month + 1), dayOfMonth);
+                                startDateSelector.setText((month + 1) + "/" + dayOfMonth + "/" + year);
+                            }
+                        }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -377,7 +413,7 @@ public class AssessmentDetail extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         db.AssessmentDAO().update(updatedAssessment);
                         //If changes are made to the assessment, automatically cancel any associated alarms.
-                        if(alarmSet){
+                        if (alarmSet) {
                             pendingIntentStart = PendingIntent.getBroadcast(AssessmentDetail.this,
                                     assessment.assID,
                                     alarmIntent,

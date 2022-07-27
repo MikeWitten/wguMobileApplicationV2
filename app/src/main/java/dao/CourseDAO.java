@@ -40,5 +40,8 @@ public interface CourseDAO {
     @Query("DELETE FROM courses WHERE mentorID IS :id")
     void deleteMentorCourses(Integer id);
 
+    @Query("DELETE FROM courses WHERE termID IS :id")
+    void deleteTermCourses(Integer id);
+
 
 }

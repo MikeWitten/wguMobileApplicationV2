@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="activities.CourseDetail">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

@@ -24,62 +24,48 @@ import entities.Term;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Start main screen.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    //Create an overflow menu
+    /**
+     * Create an over-flow menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void toTermsView(View view) {
-        Intent intent = new Intent(MainActivity.this, TermsList.class);
-        startActivity(intent);
-    }
-
-    public void toCoursesView(View view) {
-    }
-
-    public void toAssessmentsView(View view) {
-        Intent intent = new Intent(MainActivity.this, AssessmentList.class);
-        startActivity(intent);
-    }
-
-    public void toMentorsView(View view) {
-        Intent intent = new Intent(MainActivity.this, MentorList.class);
-        startActivity(intent);
-    }
-
+    /**
+     * Method to populate database in order to test the app.
+     */
     public void populateTestData(MenuItem item) {
-        System.out.println("testing" );
-        AppDatabase db= AppDatabase.getDbInstance(this.getApplicationContext());
+        System.out.println("testing");
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
         //empty database
         db.clearAllTables();
 
         //Create test data.
-        LocalDate firstStart= LocalDate.of(2001,1,1);
-        LocalDate firstEnd=LocalDate.of(2001,12,31);
-        LocalDate secondStart= LocalDate.of(2002,1,1);
-        LocalDate secondEnd=LocalDate.of(2002,12,31);
-        LocalDate thirdStart= LocalDate.of(2004,1,1);
-        LocalDate thirdEnd=LocalDate.of(2004,12,31);
-        LocalDate fourthStart= LocalDate.of(2001,1,1);
-        LocalDate fourthEnd=LocalDate.of(2001,12,31);
+        LocalDate firstStart = LocalDate.of(2001, 1, 1);
+        LocalDate firstEnd = LocalDate.of(2001, 12, 31);
+        LocalDate secondStart = LocalDate.of(2002, 1, 1);
+        LocalDate secondEnd = LocalDate.of(2002, 12, 31);
+        LocalDate thirdStart = LocalDate.of(2004, 1, 1);
+        LocalDate thirdEnd = LocalDate.of(2004, 12, 31);
+        LocalDate fourthStart = LocalDate.of(2007, 1, 1);
+        LocalDate fourthEnd = LocalDate.of(2007, 12, 31);
 
-        Term a = new Term(1,"Sorcerers Stone", firstStart, firstEnd);
-        Term b = new Term(2, "Chamber of Secrets", secondStart, secondEnd);
-        Term c = new Term(3, "Prisoner of Azkaban" , thirdStart, thirdEnd);
-        Term d = new Term(4,"Order of the Phoenix", fourthStart, fourthEnd);
+        Term a = new Term(1, "Term1: Sorcerers Stone", firstStart, firstEnd);
+        Term b = new Term(2, "Term2: Chamber of Secrets", secondStart, secondEnd);
+        Term c = new Term(3, "Term3: Prisoner of Azkaban", thirdStart, thirdEnd);
+        Term d = new Term(4, "Term4: Order of the Phoenix", fourthStart, fourthEnd);
 
         Mentor dumbledore = new Mentor(1, "Albus Dumbledore", "123-456-7890", "a.d@hogwarts.wiz");
         Mentor mcGonagall = new Mentor(2, "Minerva McGonagall", "123-321-1234", "mcGonagall@hogwarts.wiz");
-        Mentor hagrid = new Mentor(3,"Rubius Hagrid", "123-098-7654", "dogswallop@hogwarts.wiz");
+        Mentor hagrid = new Mentor(3, "Rubius Hagrid", "123-098-7654", "dogswallop@hogwarts.wiz");
         Mentor snape = new Mentor(4, "Severus Snape", "123-567-9642", "halfbloodprince@hogwarts.wiz");
 
         Course aa = new Course(1, 1, 1,
@@ -120,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 AssessmentType.Project, firstStart, firstEnd);
         Assessment ddd = new Assessment(null, 1, "Practical: Winguardium Levi'osa",
                 AssessmentType.Practical, firstStart, firstEnd);
-        Assessment ppp = new Assessment(null,7, "Petting Flying Cats",
+        Assessment ppp = new Assessment(null, 7, "Petting Flying Cats",
                 AssessmentType.Paper, secondStart, secondEnd);
         Assessment eee = new Assessment(null, 9, "Manly Grooming Exam",
                 AssessmentType.Test, thirdStart, thirdEnd);
@@ -129,17 +115,20 @@ public class MainActivity extends AppCompatActivity {
                 thirdStart, thirdEnd);
 
         Note abc = new Note(null, 2, "Note 1", "I like making notes");
-        Note def = new Note(null, 2, "Note2", "This teacher is a Witch!" );
+        Note def = new Note(null, 2, "Note2", "This teacher is a Witch!");
 
         //Add test data to the database.
-        db.courseDAO().insertAll(aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,mm);
-        db.AssessmentDAO().insertAll(aaa,bbb,ccc,ddd,eee,fff,ppp);
-        db.termDAO().insertAll(a,b,c,d);
+        db.courseDAO().insertAll(aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, kk, ll, mm);
+        db.AssessmentDAO().insertAll(aaa, bbb, ccc, ddd, eee, fff, ppp);
+        db.termDAO().insertAll(a, b, c, d);
         db.mentorDAO().insertAll(dumbledore, mcGonagall, hagrid, snape);
-        db.noteDAO().insertAll(abc,def);
+        db.noteDAO().insertAll(abc, def);
     }
 
-    public void deleteDataBase(MenuItem item){
+    /**
+     * Method to delete the database.
+     */
+    public void deleteDataBase(MenuItem item) {
         System.out.println("testingDelete");
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
         db.termDAO().deleteAllRows();
@@ -149,4 +138,29 @@ public class MainActivity extends AppCompatActivity {
         db.noteDAO().deleteAllRows();
 
     }
+
+    /**
+     * The rest of this class consists of navigation to the various lists.
+     */
+    public void toTermsView(View view) {
+        Intent intent = new Intent(MainActivity.this, TermsList.class);
+        startActivity(intent);
+    }
+
+    public void toCoursesView(View view) {
+        Intent intent = new Intent(MainActivity.this, CourseList.class);
+        startActivity(intent);
+    }
+
+    public void toAssessmentsView(View view) {
+        Intent intent = new Intent(MainActivity.this, AssessmentList.class);
+        startActivity(intent);
+    }
+
+    public void toMentorsView(View view) {
+        Intent intent = new Intent(MainActivity.this, MentorList.class);
+        startActivity(intent);
+    }
+
+
 }
