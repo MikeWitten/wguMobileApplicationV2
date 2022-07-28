@@ -6,4 +6,66 @@
     android:layout_height="match_parent"
     tools:context="activities.NoteAdd">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
+    <TextView
+        android:id="@+id/addNotePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add Note"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_margin="15sp"/>
+
+    <EditText
+        android:id="@+id/noteTitleET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/addNotePage"
+        android:layout_margin="20sp"
+        android:gravity="center"
+        android:hint="Add a Title"
+        />
+
+    <EditText
+        android:id="@+id/noteContentET"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20sp"
+        android:gravity="top"
+        android:hint="Type Your Note Here"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/noteTitleET"
+         />
+
+    <Button
+        android:id="@+id/saveNoteBTN"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteContentET"
+        android:layout_margin="20sp"
+        android:text="Save Note"/>
+
+    <Button
+        android:id="@+id/cancelNote"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteContentET"
+        android:layout_margin="20sp"
+        android:text="Cancel"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

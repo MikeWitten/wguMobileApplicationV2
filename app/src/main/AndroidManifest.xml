@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.wittenPortfolio">
+    package="com.wittenPortfolio" >
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -14,19 +15,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WguMobileApplication"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name="activities.SendSMS"
+            android:exported="false" />
         <activity
             android:name="activities.MentorAdd"
             android:exported="false"
-            android:parentActivityName="activities.MentorList"/>
+            android:parentActivityName="activities.MentorList" />
         <activity
             android:name="activities.MentorDetail"
             android:exported="false"
-            android:parentActivityName="activities.MentorList"/>
+            android:parentActivityName="activities.MentorList" />
         <activity
             android:name="activities.MentorList"
             android:exported="false"
-            android:parentActivityName="activities.MainActivity"/>
+            android:parentActivityName="activities.MainActivity" />
         <activity
             android:name="activities.NoteDetail"
             android:exported="false" />
@@ -36,15 +40,15 @@
         <activity
             android:name="activities.CourseAdd"
             android:exported="false"
-            android:parentActivityName="activities.CourseList"/>
+            android:parentActivityName="activities.CourseList" />
         <activity
             android:name="activities.CourseList"
             android:exported="false"
-            android:parentActivityName="activities.MainActivity"/>
+            android:parentActivityName="activities.MainActivity" />
         <activity
             android:name="activities.CourseDetail"
             android:exported="false"
-            android:parentActivityName="activities.CourseList"/>
+            android:parentActivityName="activities.CourseList" />
         <activity
             android:name="activities.TermDetails"
             android:exported="false"
@@ -71,7 +75,7 @@
             android:parentActivityName="activities.MainActivity" />
         <activity
             android:name="activities.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -13,8 +13,8 @@ import entities.Note;
 @Dao
 public interface NoteDAO {
 
-    @Query("SELECT * FROM notes")
-    List<Note> getAllNotes();
+    @Query("SELECT * FROM notes WHERE course_ID IS :id")
+    List<Note> getAllNotes(int id);
 
     @Query("DELETE FROM notes")
     void deleteAllRows();
