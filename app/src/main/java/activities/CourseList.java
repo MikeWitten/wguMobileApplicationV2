@@ -68,6 +68,6 @@ public class CourseList extends AppCompatActivity implements CourseListAdapter.O
         Course course = courses.get(position);
         Intent intent = new Intent(CourseList.this, CourseDetail.class);
         intent.putExtra("class", course);
-        Toast.makeText(this, course.courseName, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
     }
 }

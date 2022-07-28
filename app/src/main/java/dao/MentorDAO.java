@@ -19,6 +19,9 @@ public interface MentorDAO {
     @Query("DELETE FROM mentors")
     void deleteAllRows();
 
+    @Query("SELECT name FROM mentors")
+    String[] getMentorsArray();
+
     @Insert
     void insertAll(Mentor... mentors);
 

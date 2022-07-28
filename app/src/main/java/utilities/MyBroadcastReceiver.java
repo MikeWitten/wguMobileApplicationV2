@@ -21,6 +21,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         }
         //After 1 second turn off the alarm sound.
         mediaPlayer.stop();
-        Toast.makeText(context, "You have an assessment scheduled today", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "You have an something scheduled today", Toast.LENGTH_LONG).show();
     }
 }

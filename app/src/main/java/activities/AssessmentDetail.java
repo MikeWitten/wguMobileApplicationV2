@@ -135,7 +135,6 @@ public class AssessmentDetail extends AppCompatActivity {
         }
     }
 
-
     private void setFields() {
         //Title
         titleText = findViewById(R.id.assTitleET);
@@ -248,7 +247,7 @@ public class AssessmentDetail extends AppCompatActivity {
         pendingIntentEnd = PendingIntent.getBroadcast(this,
                 assessment.assID + 10000,
                 alarmIntent,
-                0);
+                PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endTimeInMillis, pendingIntentEnd);
 
         //Confirm the alarm action.

@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
 
         Assessment aaa = new Assessment(null, 1, "Wands Exam",
                 AssessmentType.Test, firstStart, firstEnd);
-        Assessment bbb = new Assessment(null, 1, "Paper: 'White privilege for magical orphans'",
+        Assessment bbb = new Assessment(null, 2, "Paper: 'White privilege for magical orphans'",
                 AssessmentType.Paper, firstStart, firstEnd);
-        Assessment ccc = new Assessment(null, 1, "Project: Make a magical Friend",
+        Assessment ccc = new Assessment(null, 3, "Project: Make a magical Friend",
                 AssessmentType.Project, firstStart, firstEnd);
-        Assessment ddd = new Assessment(null, 1, "Practical: Winguardium Levi'osa",
+        Assessment ddd = new Assessment(null, 4, "Practical: Winguardium Levi'osa",
                 AssessmentType.Practical, firstStart, firstEnd);
         Assessment ppp = new Assessment(null, 7, "Petting Flying Cats",
                 AssessmentType.Paper, secondStart, secondEnd);

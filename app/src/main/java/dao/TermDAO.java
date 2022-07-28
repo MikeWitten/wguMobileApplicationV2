@@ -15,6 +15,9 @@ public interface TermDAO {
     @Query("SELECT * FROM terms")
     List<Term> getAllTerms();
 
+    @Query("SELECT term_name FROM terms")
+    String[] getTermsArray();
+
     @Query("DELETE FROM terms")
     void deleteAllRows();
 

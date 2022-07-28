@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="activities.NoteDetail">
 
+    <TextView
+        android:id="@+id/textViewTemp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="NOTE DETAIL"
+        android:textSize="29sp"
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>
