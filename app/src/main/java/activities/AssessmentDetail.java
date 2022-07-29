@@ -57,7 +57,7 @@ public class AssessmentDetail extends AppCompatActivity {
     String[] courses;
     String[] types;
     List<Course> courseList;
-    ArrayList<Course> courseArrayList;
+    ArrayList<Course> courseArrayList = new ArrayList<Course>();
     boolean courseExists;
     Course currentCourse = null;
     AlertDialog courseDialog;
@@ -361,8 +361,9 @@ public class AssessmentDetail extends AppCompatActivity {
         spinnerCourseBtn = findViewById(R.id.spinnerCourseBTN);
         spinnerCourseBtn.setText(currentCourse.courseName);
         courses = db.courseDAO().getCoursesArray();
-        //This course arrat list can be used to get the current course, however because it is not synchronized,
+        //This course array list can be used to get the current course, however because it is not synchronized,
         // it is preferable to use a regular list.
+        courseList = db.courseDAO().getAllCourses();
         courseArrayList.addAll(courseList);
 
         //Create a dialog.
