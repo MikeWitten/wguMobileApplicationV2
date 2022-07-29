@@ -4,16 +4,32 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/drawable/add.xml" value="0.168" />
-        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_add_assessment.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_add_term.xml" value="0.2" />
-        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_assessment_detail.xml" value="0.4" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2595" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_add_assessment.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_assessment_detail.xml" value="0.165234375" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_assessment_list.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_course_add.xml" value="0.165234375" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_course_detail.xml" value="0.165234375" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_course_list.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_mentor_add.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_mentor_detail.xml" value="0.2" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_mentor_list.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_note_add.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_note_detail.xml" value="0.20625" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_send_sms.xml" value="0.1945945945945946" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_term_details.xml" value="0.1945945945945946" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout-land/activity_terms_list.xml" value="0.4296875" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_add_assessment.xml" value="0.264" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_add_term.xml" value="0.25" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_assessment_detail.xml" value="0.264" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_assessment_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_course_add.xml" value="0.264" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_course_detail.xml" value="0.264" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_course_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_mentor_add.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_mentor_detail.xml" value="0.4" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_mentor_detail.xml" value="0.2" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_mentor_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_note_add.xml" value="0.264" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/activity_note_detail.xml" value="0.25416666666666665" />
@@ -27,6 +43,7 @@
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/note_recycler_row.xml" value="0.18984375" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/layout/term_recycler_row.xml" value="0.253125" />
         <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/menu/my_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/miche/AndroidStudioProjects/wguMobileApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2595" />
       </map>
     </option>
   </component>

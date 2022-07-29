@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Portal"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        android:layout_margin="15sp"/>
+
+    <ImageView
+        android:id="@+id/termsImage"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginLeft="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/calendar" />
+
+    <Button
+        android:id="@+id/termsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="toTermsView"
+        android:text="Terms"
+        app:layout_constraintBottom_toBottomOf="@+id/termsImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/termsImage"
+        app:layout_constraintTop_toTopOf="@+id/termsImage"
+        app:layout_constraintEnd_toStartOf="@id/homeText"
+        android:layout_marginEnd="15sp" />
+
+    <ImageView
+        android:id="@+id/coursesImage"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginLeft="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/termsImage"
+        app:srcCompat="@drawable/classesart" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="toCoursesView"
+        android:text="Courses"
+        app:layout_constraintBottom_toBottomOf="@+id/coursesImage"
+        app:layout_constraintStart_toEndOf="@+id/coursesImage"
+        app:layout_constraintTop_toTopOf="@+id/coursesImage"
+        app:layout_constraintEnd_toStartOf="@id/homeText"
+        android:layout_marginEnd="15sp"
+         />
+
+    <ImageView
+        android:id="@+id/assessmentsImage"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_margin="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coursesImage"
+        app:srcCompat="@drawable/test" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Assessments"
+        app:layout_constraintBottom_toBottomOf="@+id/assessmentsImage"
+        app:layout_constraintStart_toEndOf="@+id/assessmentsImage"
+        app:layout_constraintTop_toTopOf="@+id/assessmentsImage"
+        app:layout_constraintEnd_toStartOf="@id/homeText"
+        android:layout_marginEnd="15sp"
+        android:onClick="toAssessmentsView"/>
+
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_margin="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assessmentsImage"
+        app:srcCompat="@drawable/owlteacher" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Mentors"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@id/homeText"
+        android:layout_marginEnd="15sp"
+        android:onClick="toMentorsView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

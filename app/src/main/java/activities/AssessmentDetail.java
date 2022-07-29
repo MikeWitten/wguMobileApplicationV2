@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.wittenPortfolio.R;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -56,6 +57,7 @@ public class AssessmentDetail extends AppCompatActivity {
     String[] courses;
     String[] types;
     List<Course> courseList;
+    ArrayList<Course> courseArrayList;
     boolean courseExists;
     Course currentCourse = null;
     AlertDialog courseDialog;
@@ -359,14 +361,18 @@ public class AssessmentDetail extends AppCompatActivity {
         spinnerCourseBtn = findViewById(R.id.spinnerCourseBTN);
         spinnerCourseBtn.setText(currentCourse.courseName);
         courses = db.courseDAO().getCoursesArray();
+        //This course arrat list can be used to get the current course, however because it is not synchronized,
+        // it is preferable to use a regular list.
+        courseArrayList.addAll(courseList);
+
         //Create a dialog.
         courseDialog = new AlertDialog.Builder(AssessmentDetail.this).setSingleChoiceItems(courses, selected,
                 (dialog, which) -> {
                     spinnerCourseBtn.setText(courses[which]);
                     selected = which;
                     //Find the selected course and set it to currentCourse.
-                    for (Course c : courseList) {
-                        if (courses[which].toString().equalsIgnoreCase(c.courseName)) {
+                    for (Course c : courseArrayList) {
+                        if (courses[which].equalsIgnoreCase(c.courseName)) {
                             currentCourse = c;
                         }
                     }

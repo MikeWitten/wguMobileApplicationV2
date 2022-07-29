@@ -11,32 +11,32 @@
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_margin="15dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hogwarts_logo" />
 
     <TextView
         android:id="@+id/textView2625"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Course Details"
         android:layout_margin="15sp"
+        android:text="Course Details"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/courseNameET"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/textView2625"
         android:layout_margin="20sp"
+        android:gravity="center"
         android:hint="course name"
-        />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView2625"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvaldkfj"
@@ -44,39 +44,38 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Course Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/courseNameET"
+        app:layout_constraintStart_toStartOf="@+id/courseNameET"
         app:layout_constraintTop_toBottomOf="@id/courseNameET" />
 
     <Button
         android:id="@+id/termNameSpnrBTN"
-        android:layout_width="200sp"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:text="termSelect"
         app:layout_constraintTop_toBottomOf="@id/tvaldkfj"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20sp"
+        android:layout_margin="5dp"
         android:textColor="@color/black"
         style = "?spinnerStyle"/>
 
     <Button
         android:id="@+id/mentorNameSpnrBTN"
-        android:layout_width="200sp"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:text="mentorSelect"
         app:layout_constraintTop_toBottomOf="@id/termNameSpnrBTN"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20sp"
+        android:layout_margin="5dp"
         android:textColor="@color/black"
         style = "?spinnerStyle"/>
 
     <Button
         android:id="@+id/courseStatusSpnrBTN"
         style="?spinnerStyle"
-        android:layout_width="200sp"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:layout_marginStart="16dp"
+        android:layout_margin="5dp"
         android:text="courseStatus"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,112 +83,113 @@
 
     <Button
         android:id="@+id/courseNotesBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
+        android:layout_margin="10dp"
         android:onClick="toAssociatedNotes"
         android:text="Course Notes"
-        app:layout_constraintStart_toEndOf="@+id/termNameSpnrBTN"
-        app:layout_constraintTop_toBottomOf="@+id/tvaldkfj" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN" />
 
     <Button
         android:id="@+id/setCourseAlarmBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
+        android:layout_margin="10dp"
         android:text="Set Alarm"
-        app:layout_constraintStart_toEndOf="@+id/courseStatusSpnrBTN"
-        app:layout_constraintTop_toBottomOf="@+id/mentorNameSpnrBTN" />
-
-    <Button
-        android:id="@+id/professorDetails"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:text="Mentor Details"
-        app:layout_constraintStart_toEndOf="@+id/mentorNameSpnrBTN"
-        app:layout_constraintTop_toBottomOf="@+id/termNameSpnrBTN" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN" />
 
     <Button
         android:id="@+id/invisibleDeleteAlarmBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:text="Delete Alarm"
-        app:layout_constraintStart_toEndOf="@id/mentorNameSpnrBTN"
-        app:layout_constraintTop_toBottomOf="@id/courseNotesBTN"
+        android:layout_margin="10dp"
+        android:text="Turn Off Alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/courseNotesBTN"
         android:visibility="gone"/>
 
     <Button
-        android:id="@+id/courseStartDateSelector"
-        android:layout_width="200sp"
+        android:id="@+id/professorDetails"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Mentor Details"
+        app:layout_constraintStart_toEndOf="@+id/courseNotesBTN"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN" />
+
+
+    <Button
+        android:id="@+id/courseStartDateSelector"
+        style="?spinnerStyle"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="startDate"
-        app:layout_constraintTop_toBottomOf="@id/courseStatusSpnrBTN"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20sp"
         android:textColor="@color/black"
-        style="?spinnerStyle"/>
+        app:layout_constraintStart_toEndOf="@+id/mentorNameSpnrBTN"
+        app:layout_constraintTop_toBottomOf="@+id/tvaldkfj" />
 
     <Button
         android:id="@+id/courseEndDateSelector"
-        android:layout_width="200sp"
+        style="?spinnerStyle"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="endDate"
-        app:layout_constraintTop_toBottomOf="@id/courseStartDateSelector"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20sp"
         android:textColor="@color/black"
-        style = "?spinnerStyle"/>
+        app:layout_constraintStart_toEndOf="@+id/mentorNameSpnrBTN"
+        app:layout_constraintTop_toBottomOf="@id/courseStartDateSelector" />
 
     <TextView
         android:id="@+id/courseAlarmNotificationTV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
         android:text="Text is Broken"
         android:textSize="20sp"
-        android:gravity="center"/>
+        app:layout_constraintBottom_toBottomOf="@+id/courseStatusSpnrBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/editCourseBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="Edit Course"
-        app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
-        app:layout_constraintTop_toBottomOf="@+id/courseStartDateSelector"
-        android:layout_margin="20sp"/>
+        app:layout_constraintStart_toEndOf="@+id/professorDetails"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN" />
 
     <Button
         android:id="@+id/invisibleSaveChangesBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="Save Changes"
-        app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
-        app:layout_constraintTop_toBottomOf="@+id/courseStartDateSelector"
-        android:layout_margin="20sp"
+        app:layout_constraintStart_toEndOf="@+id/professorDetails"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN"
+        android:layout_margin="10dp"
         android:visibility="gone"/>
 
     <Button
         android:id="@+id/invisibleCancelChangesBTN"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
+        android:layout_margin="10dp"
         android:text="Cancel"
-        app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
-        app:layout_constraintTop_toBottomOf="@+id/courseEndDateSelector"
+        app:layout_constraintEnd_toStartOf="@+id/setCourseAlarmBTN"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN"
         android:visibility="gone"/>
 
     <Button
         android:id="@+id/deleteCourseBTN"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="Delete Course"
-        app:layout_constraintBottom_toTopOf="@+id/courseAlarmNotificationTV"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20sp"/>
+        app:layout_constraintEnd_toStartOf="@+id/setCourseAlarmBTN"
+        app:layout_constraintTop_toBottomOf="@+id/courseStatusSpnrBTN" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

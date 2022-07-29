@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wittenPortfolio.R;
 
 import java.util.List;
+import java.util.Objects;
 
 import adapters.AssessmentListAdapter;
 import adapters.NoteListAdapter;
@@ -36,6 +37,8 @@ public class NoteDetail extends AppCompatActivity implements NoteListAdapter.OnN
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_detail);
+        //Enable the back button
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //get course object
         course = getIntent().getExtras().getParcelable("class");
         //Get an instance of the database and a full list of 'Assessment" objects.

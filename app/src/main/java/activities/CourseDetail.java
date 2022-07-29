@@ -49,6 +49,7 @@ public class CourseDetail extends AppCompatActivity {
     Button saveChangesBtn;
     Button cancelChangesBtn;
     Button deleteCourseBtn;
+    Button mentorDetails;
     TextView alarmNotificationTV;
     Course newCourse;
     Integer courseID;
@@ -99,7 +100,21 @@ public class CourseDetail extends AppCompatActivity {
         makeEditable();
         //Set up Delete button
         setUpDeleteButton();
+        //Set up the mentor button
+        toMentor();
 
+    }
+
+    private void toMentor() {
+        mentorDetails = findViewById(R.id.professorDetails);
+        mentorDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CourseDetail.this, MentorDetail.class);
+                intent.putExtra("professor", currentMentor);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setUpDeleteButton() {

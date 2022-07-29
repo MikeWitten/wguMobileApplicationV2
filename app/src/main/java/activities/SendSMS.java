@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.wittenPortfolio.R;
 
+import java.util.Objects;
+
+import database.AppDatabase;
 import entities.Course;
 import entities.Note;
 
@@ -26,11 +29,14 @@ public class SendSMS extends AppCompatActivity {
     TextView message;
     String content;
     String phone;
+    AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_sms);
+        //Enable the back button
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //Get objects from intent
         note = getIntent().getExtras().getParcelable("note");
         course = getIntent().getExtras().getParcelable("class");
@@ -38,6 +44,8 @@ public class SendSMS extends AppCompatActivity {
         ActivityCompat.requestPermissions(SendSMS.this,
                 new String[]{Manifest.permission.SEND_SMS},
                 PackageManager.PERMISSION_GRANTED);
+        //Get an instance of the database
+        db = AppDatabase.getDbInstance(this.getApplicationContext());
         //Set message text
         message = findViewById(R.id.currentMessage);
         message.setText(note.note);
@@ -47,6 +55,26 @@ public class SendSMS extends AppCompatActivity {
         setUpCancel();
         //Set up send button
         setUpSend();
+        //Set up Delete button
+        deleteButton();
+    }
+
+    private void deleteButton() {
+        Button delete = findViewById(R.id.deleteNote);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Delete the note.... no need to confirm as notes are meant to be temporary.
+                db.noteDAO().delete(note);
+                //Acknowledge successful delete.
+                Toast.makeText(SendSMS.this, "Note Deleted", Toast.LENGTH_SHORT).show();
+                //Send User back to course details.
+                Intent intent = new Intent(SendSMS.this, CourseDetail.class);
+                intent.putExtra("class", course);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void setUpSend() {
@@ -64,6 +92,11 @@ public class SendSMS extends AppCompatActivity {
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(phone, null, content, null, null);
                 Toast.makeText(SendSMS.this, "Message Sent", Toast.LENGTH_SHORT).show();
+
+                //Send user back to course
+                Intent intent = new Intent(SendSMS.this, CourseDetail.class);
+                intent.putExtra("class", course);
+                startActivity(intent);
             }
         });
     }

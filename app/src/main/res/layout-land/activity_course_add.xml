@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.CourseAdd">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15sp"
+        android:gravity="center"
+        android:text="Course Add Page"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/courseNameET2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:gravity="center"
+        android:hint="course name"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvaldkfj2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Course Name"
+        app:layout_constraintEnd_toEndOf="@+id/courseNameET2"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/courseNameET2"
+        app:layout_constraintTop_toBottomOf="@id/courseNameET2" />
+
+    <Button
+        android:id="@+id/termNameSpnrBTN2"
+        style="?spinnerStyle"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="termSelect"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvaldkfj2" />
+
+    <Button
+        android:id="@+id/mentorNameSpnrBTN2"
+        style="?spinnerStyle"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="mentorSelect"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/termNameSpnrBTN2"
+        app:layout_constraintTop_toBottomOf="@+id/tvaldkfj2" />
+
+    <Button
+        android:id="@+id/courseStatusSpnrBTN2"
+        style="?spinnerStyle"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:text="courseStatus"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mentorNameSpnrBTN2" />
+
+    <Button
+        android:id="@+id/courseStartDateSelector2"
+        style="?spinnerStyle"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="startDate"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/courseStatusSpnrBTN2"
+        app:layout_constraintTop_toBottomOf="@+id/mentorNameSpnrBTN2" />
+
+    <Button
+        android:id="@+id/courseEndDateSelector2"
+        style="?spinnerStyle"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="endDate"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseStartDateSelector2" />
+
+    <Button
+        android:id="@+id/addCoursebutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25sp"
+        android:text="Add Course"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

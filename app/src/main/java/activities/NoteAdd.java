@@ -11,16 +11,18 @@ import android.widget.Toast;
 
 import com.wittenPortfolio.R;
 
+import java.util.Objects;
+
 import database.AppDatabase;
 import entities.Course;
 import entities.Note;
 
 public class NoteAdd extends AppCompatActivity {
     Course course;
-    EditText title = findViewById(R.id.noteTitleET);
-    EditText content = findViewById(R.id.noteContentET);
-    Button save = findViewById(R.id.saveNoteBTN);
-    Button cancel = findViewById(R.id.cancelNote);
+    EditText title;
+    EditText content;
+    Button save;
+    Button cancel;
     String titleString;
     String contentString;
     AppDatabase db;
@@ -30,6 +32,8 @@ public class NoteAdd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_add);
+        //Enable the back button
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //Get object from intent
         course = getIntent().getExtras().getParcelable("class");
         //Get an instance of the database
@@ -42,9 +46,12 @@ public class NoteAdd extends AppCompatActivity {
     }
 
     private void saveBTN() {
+        save = findViewById(R.id.saveNoteBTN);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                content = findViewById(R.id.noteContentET);
+                title = findViewById(R.id.noteTitleET);
                 if(title.getText().toString().isEmpty()){
                     titleString = "Note that must not be named";
                 }
@@ -67,6 +74,7 @@ public class NoteAdd extends AppCompatActivity {
     }
 
     private void cancelBTN() {
+        cancel = findViewById(R.id.cancelNote);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
