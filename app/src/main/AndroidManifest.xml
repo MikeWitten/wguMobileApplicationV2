@@ -89,7 +89,8 @@
         <receiver
             android:name="utilities.MyBroadcastReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+             />
     </application>
 
 </manifest>

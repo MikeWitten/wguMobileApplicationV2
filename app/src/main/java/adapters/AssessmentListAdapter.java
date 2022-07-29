@@ -1,7 +1,6 @@
 package adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +14,13 @@ import com.wittenPortfolio.R;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import activities.AssessmentDetail;
 import entities.Assessment;
 
 public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAdapter.assessmentsViewHolder> {
 
-    private Context context;
-    private List<Assessment> assessmentList;
-    private OnAssessmentListener mOnAssessmentListener;
+    private final Context context;
+    private final List<Assessment> assessmentList;
+    private final OnAssessmentListener mOnAssessmentListener;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     /**
@@ -55,7 +53,7 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
         return this.assessmentList.size();
     }
 
-    public class assessmentsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class assessmentsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView columnAssTitle;
         TextView columnAssType;
         TextView columnAssStart;

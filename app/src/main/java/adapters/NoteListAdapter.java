@@ -11,18 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.wittenPortfolio.R;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 
 import entities.Note;
 
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.notesViewHolder> {
 
-    private Context context;
-    private List<Note> noteList;
-    private OnNoteListener mOnNoteListener;
-    DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+    private final Context context;
+    private final List<Note> noteList;
+    private final OnNoteListener mOnNoteListener;
 
     /**
      * Create a constructor for the adapter.
@@ -52,7 +49,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.notesV
         return this.noteList.size();
     }
 
-    public class notesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class notesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView noteTitle;
         TextView noteContent;
         OnNoteListener onNoteListener;

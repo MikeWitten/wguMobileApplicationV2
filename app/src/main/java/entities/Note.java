@@ -54,22 +54,6 @@ public class Note implements Parcelable {
         }
     };
 
-    public Integer getNoteID() {
-        return noteID;
-    }
-
-    public void setNoteID(Integer noteID) {
-        this.noteID = noteID;
-    }
-
-    public Integer getCourseID() {
-        return courseID;
-    }
-
-    public void setCourseID(Integer courseID) {
-        this.courseID = courseID;
-    }
-
     public String getTitle() {
         return title;
     }

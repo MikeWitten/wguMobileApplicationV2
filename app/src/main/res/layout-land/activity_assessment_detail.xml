@@ -13,7 +13,8 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <EditText
         android:id="@+id/assTitleET"
@@ -21,11 +22,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="Title"
+        android:hint="@string/title"
         android:inputType="none"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/assIDTV"
@@ -33,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="Assessment ID: "
+        android:hint="@string/assessment_id"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/assTitleET" />
@@ -45,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Course"
+        android:text="@string/course"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assIDTV" />
@@ -57,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Assessment Type"
+        android:text="@string/assessment_type"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCourseBTN" />
@@ -69,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Start Date"
+        android:text="@string/start_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerAssTypeBTN" />
@@ -81,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="End Date"
+        android:text="@string/end_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateSelector" />
@@ -92,7 +94,7 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:onClick="makeEditable"
-        android:text="Edit"
+        android:text="@string/edit"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +103,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
@@ -114,7 +116,7 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:onClick="saveChanges"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/assTitleET" />
 
@@ -122,7 +124,7 @@
         android:id="@+id/alarmBTN"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="set an Alarm"
+        android:text="@string/set_an_alarm"
         app:layout_constraintEnd_toEndOf="@+id/saveBTN"
         app:layout_constraintStart_toStartOf="@+id/saveBTN"
         app:layout_constraintTop_toBottomOf="@+id/deleteAssessmentBTN" />
@@ -131,7 +133,7 @@
         android:id="@+id/cancelAlarmBTN"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"
+        android:text="@string/cancel_alarm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/saveBTN"
         app:layout_constraintStart_toStartOf="@+id/saveBTN"
@@ -147,7 +149,7 @@
         android:layout_margin="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
-        android:text="Delete Assessment"
+        android:text="@string/delete_assessment"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/saveBTN" />
 
@@ -157,7 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Text is Broken"
+        android:text="@string/text_is_broken"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/saveBTN"

@@ -3,6 +3,7 @@ package entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -49,10 +50,6 @@ public class Term implements Parcelable {
         return termID;
     }
 
-    public void setTermID(Integer termID) {
-        this.termID = termID;
-    }
-
     public String getTermName() {
         return termName;
     }
@@ -77,6 +74,7 @@ public class Term implements Parcelable {
         this.endDate = endDate;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Term{" +

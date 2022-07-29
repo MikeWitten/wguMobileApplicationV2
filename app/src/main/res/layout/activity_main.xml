@@ -14,13 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/homeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student Portal"
+        android:text="@string/student_portal"
         android:textStyle="italic|bold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/logoImage"
@@ -32,17 +33,18 @@
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_marginTop="15sp"
-        android:layout_marginLeft="15sp"
+        android:layout_marginStart="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeText"
-        app:srcCompat="@drawable/calendar" />
+        app:srcCompat="@drawable/calendar"
+        android:contentDescription="@string/terms_image" />
 
     <Button
         android:id="@+id/termsButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Terms"
+        android:text="@string/terms"
         app:layout_constraintBottom_toBottomOf="@+id/termsImage"
         app:layout_constraintStart_toEndOf="@+id/termsImage"
         app:layout_constraintTop_toTopOf="@+id/termsImage"
@@ -53,16 +55,17 @@
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_marginTop="15sp"
-        android:layout_marginLeft="15sp"
+        android:layout_marginStart="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/termsImage"
-        app:srcCompat="@drawable/classesart" />
+        app:srcCompat="@drawable/classesart"
+        android:contentDescription="@string/course_image" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Courses"
+        android:text="@string/courses"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/coursesImage"
         app:layout_constraintStart_toEndOf="@+id/coursesImage"
@@ -74,16 +77,17 @@
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_marginTop="15sp"
-        android:layout_marginLeft="15sp"
+        android:layout_marginStart="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coursesImage"
-        app:srcCompat="@drawable/test" />
+        app:srcCompat="@drawable/test"
+        android:contentDescription="@string/assessment_image" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Assessments"
+        android:text="@string/assessments"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/assessmentsImage"
         app:layout_constraintStart_toEndOf="@+id/assessmentsImage"
@@ -96,16 +100,17 @@
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_marginTop="15sp"
-        android:layout_marginLeft="15sp"
+        android:layout_marginStart="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assessmentsImage"
-        app:srcCompat="@drawable/owlteacher" />
+        app:srcCompat="@drawable/owlteacher"
+        android:contentDescription="@string/mentor_image" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Mentors"
+        android:text="@string/mentors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintStart_toEndOf="@+id/imageView8"

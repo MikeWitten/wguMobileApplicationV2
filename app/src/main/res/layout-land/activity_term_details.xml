@@ -13,7 +13,8 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/termNameTV"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="TermName"
+        android:text="@string/termname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="start"
-        android:text="StartDate"
+        android:text="@string/start_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/termNameTV"
         />
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="end"
-        android:text="EndDate"
+        android:text="@string/enddate"
         app:layout_constraintEnd_toEndOf="@+id/termNameTV"
         app:layout_constraintTop_toBottomOf="@id/termNameTV" />
 
@@ -52,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Courses This Term"
+        android:text="@string/courses_this_term"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
@@ -76,14 +77,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="15sp"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/add"
+        android:contentDescription="@string/add_a_course" />
 
     <Button
         android:id="@+id/deleteTermButton"
         android:layout_width="100sp"
         android:layout_height="wrap_content"
         android:layout_margin="15sp"
-        android:text="Delete Term"
+        android:text="@string/delete_term"
         app:layout_constraintBottom_toTopOf="@+id/toAddCourse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />

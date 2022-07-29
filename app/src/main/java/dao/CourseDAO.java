@@ -9,7 +9,6 @@ import androidx.room.Update;
 import java.util.List;
 
 import entities.Course;
-import entities.Term;
 
 @Dao
 public interface CourseDAO {

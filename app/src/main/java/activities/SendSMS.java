@@ -1,18 +1,17 @@
 package activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.wittenPortfolio.R;
 
@@ -61,55 +60,46 @@ public class SendSMS extends AppCompatActivity {
 
     private void deleteButton() {
         Button delete = findViewById(R.id.deleteNote);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Delete the note.... no need to confirm as notes are meant to be temporary.
-                db.noteDAO().delete(note);
-                //Acknowledge successful delete.
-                Toast.makeText(SendSMS.this, "Note Deleted", Toast.LENGTH_SHORT).show();
-                //Send User back to course details.
-                Intent intent = new Intent(SendSMS.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
+        delete.setOnClickListener(v -> {
+            //Delete the note.... no need to confirm as notes are meant to be temporary.
+            db.noteDAO().delete(note);
+            //Acknowledge successful delete.
+            Toast.makeText(SendSMS.this, "Note Deleted", Toast.LENGTH_SHORT).show();
+            //Send User back to course details.
+            Intent intent = new Intent(SendSMS.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
 
-            }
         });
     }
 
     private void setUpSend() {
         Button send = findViewById(R.id.sendSMSBTN);
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(phoneNumber.getText().toString().isEmpty()){
-                    Toast.makeText(SendSMS.this, "Phone Number is Required", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                content = note.getNote();
-                phone = phoneNumber.getText().toString();
-
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(phone, null, content, null, null);
-                Toast.makeText(SendSMS.this, "Message Sent", Toast.LENGTH_SHORT).show();
-
-                //Send user back to course
-                Intent intent = new Intent(SendSMS.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
+        send.setOnClickListener(v -> {
+            if(phoneNumber.getText().toString().isEmpty()){
+                Toast.makeText(SendSMS.this, "Phone Number is Required", Toast.LENGTH_SHORT).show();
+                return;
             }
+            content = note.getNote();
+            phone = phoneNumber.getText().toString();
+
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phone, null, content, null, null);
+            Toast.makeText(SendSMS.this, "Message Sent", Toast.LENGTH_SHORT).show();
+
+            //Send user back to course
+            Intent intent = new Intent(SendSMS.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 
     private void setUpCancel() {
         Button cancelButton = findViewById(R.id.cancelSMSBTN);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SendSMS.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
-            }
+        cancelButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SendSMS.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 }

@@ -3,6 +3,7 @@ package entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -73,14 +74,7 @@ public class Mentor implements Parcelable {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return "Mentor: " + "name= " + name;

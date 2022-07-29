@@ -1,17 +1,15 @@
 package activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wittenPortfolio.R;
@@ -27,7 +25,6 @@ import entities.Term;
 
 //This class implements a listener to allow the user to select a list item in the recycler view.
 public class TermDetails extends AppCompatActivity implements AssociatedCoursesAdapter.OnAssociatedCourseListener {
-    private AssociatedCoursesAdapter associatedCoursesAdapter;
     List<Course> associatedCourses;
     public FloatingActionButton toAddCourseBtn;
     AppDatabase db;
@@ -62,42 +59,32 @@ public class TermDetails extends AppCompatActivity implements AssociatedCoursesA
 
     private void setUpDeleteButton() {
         deleteTermBtn = findViewById(R.id.deleteTermButton);
-        deleteTermBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Confirm the delete with the user.
-                AlertDialog.Builder builder = new AlertDialog.Builder(TermDetails.this);
-                builder.setCancelable(true);
-                builder.setTitle("Are You Sure?");
-                builder.setMessage("Deleting a term will Delete all associated courses within the term\n" +
-                        "\n" +
-                        "We recommend updating course information before deleting a Term.\n" +
-                        "\n" +
-                        "Would you like to continue?");
-                builder.setPositiveButton("Confirm",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Delete associated courses.
-                                db.courseDAO().deleteTermCourses(term.getTermID());
-                                //Delete the Term
-                                db.termDAO().delete(term);
-                                //Return to Terms list.
-                                Intent intent = new Intent(TermDetails.this, TermsList.class);
-                                startActivity(intent);
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Return without doing anything.
-                        return;
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+        deleteTermBtn.setOnClickListener(v -> {
+            //Confirm the delete with the user.
+            AlertDialog.Builder builder = new AlertDialog.Builder(TermDetails.this);
+            builder.setCancelable(true);
+            builder.setTitle("Are You Sure?");
+            builder.setMessage("Deleting a term will Delete all associated courses within the term\n" +
+                    "\n" +
+                    "We recommend updating course information before deleting a Term.\n" +
+                    "\n" +
+                    "Would you like to continue?");
+            builder.setPositiveButton("Confirm",
+                    (dialog, which) -> {
+                        //Delete associated courses.
+                        db.courseDAO().deleteTermCourses(term.getTermID());
+                        //Delete the Term
+                        db.termDAO().delete(term);
+                        //Return to Terms list.
+                        Intent intent = new Intent(TermDetails.this, TermsList.class);
+                        startActivity(intent);
+                    });
+            builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                //Return without doing anything.
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
-            }
         });
     }
 
@@ -107,7 +94,7 @@ public class TermDetails extends AppCompatActivity implements AssociatedCoursesA
         //Create a visual separation between items.
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         associatedClassesRecyclerView.addItemDecoration(decoration);
-        associatedCoursesAdapter = new AssociatedCoursesAdapter(this, associatedCourses, this);
+        AssociatedCoursesAdapter associatedCoursesAdapter = new AssociatedCoursesAdapter(this, associatedCourses, this);
         associatedClassesRecyclerView.setAdapter(associatedCoursesAdapter);
     }
 
@@ -123,14 +110,10 @@ public class TermDetails extends AppCompatActivity implements AssociatedCoursesA
     private void setUpFloatingButton() {
         toAddCourseBtn = findViewById(R.id.toAddCourse);
         //set an on-click listener
-        toAddCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TermDetails.this, CourseAdd.class);
-                startActivity(intent);
-            }
+        toAddCourseBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(TermDetails.this, CourseAdd.class);
+            startActivity(intent);
         });
-
     }
 
     @Override

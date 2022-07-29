@@ -14,13 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/textView1000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mentor Details"
+        android:text="@string/mentor_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="15sp"
@@ -32,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_margin="15sp"
-        android:text="Name"
+        android:text="@string/name"
         android:textSize="20sp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/textView1000"
@@ -43,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_margin="15sp"
-        android:text="Phone"
+        android:text="@string/phone"
         android:textSize="20sp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/tvMentorName"
@@ -54,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_margin="15sp"
-        android:text="Email"
+        android:text="@string/email"
         android:textSize="20sp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/tvMentorPhone"
@@ -66,7 +67,7 @@
         android:layout_height="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="100sp"
-        android:text="Delete Mentor"
+        android:text="@string/delete_mentor"
         />
 
     <TextView
@@ -74,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvMentorEmail"
-        android:text="This Mentor Teaches the following courses"
+        android:text="@string/this_mentor_teaches_the_following_courses"
         android:gravity="center"
         android:layout_margin="15sp"
         />

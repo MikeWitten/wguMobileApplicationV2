@@ -13,7 +13,8 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/textView2"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15sp"
         android:gravity="center"
-        android:text="Course Add Page"
+        android:text="@string/course_add_page"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -32,17 +33,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:gravity="center"
-        android:hint="course name"
+        android:hint="@string/course_name"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/tvaldkfj2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Course Name"
+        android:text="@string/course_name"
         app:layout_constraintEnd_toEndOf="@+id/courseNameET2"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/courseNameET2"
@@ -54,7 +57,7 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="termSelect"
+        android:text="@string/termselect"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvaldkfj2" />
@@ -65,7 +68,7 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="mentorSelect"
+        android:text="@string/mentorselect"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/termNameSpnrBTN2"
         app:layout_constraintTop_toBottomOf="@+id/tvaldkfj2" />
@@ -77,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginStart="16dp"
-        android:text="courseStatus"
+        android:text="@string/coursestatus"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mentorNameSpnrBTN2" />
@@ -88,7 +91,7 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="startDate"
+        android:text="@string/start_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/courseStatusSpnrBTN2"
         app:layout_constraintTop_toBottomOf="@+id/mentorNameSpnrBTN2" />
@@ -99,7 +102,7 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="endDate"
+        android:text="@string/end_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/courseStartDateSelector2" />
@@ -109,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="25sp"
-        android:text="Add Course"
+        android:text="@string/add_course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

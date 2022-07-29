@@ -14,17 +14,18 @@
         android:layout_margin="15sp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        android:text="Mentor Phone"
+        android:text="@string/mentor_phone"
         app:layout_constraintEnd_toEndOf="@+id/editTextMentorPhone"
         app:layout_constraintStart_toStartOf="@+id/editTextMentorPhone"
         app:layout_constraintTop_toBottomOf="@+id/editTextMentorPhone" />
@@ -38,7 +39,8 @@
         android:gravity="center"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextMentorEmailAddress"
@@ -49,14 +51,15 @@
         android:gravity="center"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        android:text="Mentor Email"
+        android:text="@string/mentor_email"
         app:layout_constraintEnd_toEndOf="@+id/editTextMentorEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/editTextMentorEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextMentorEmailAddress" />
@@ -66,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        android:text="Mentor Name"
+        android:text="@string/mentor_name"
         app:layout_constraintEnd_toEndOf="@+id/editTextMentorName"
         app:layout_constraintStart_toStartOf="@+id/editTextMentorName"
         app:layout_constraintTop_toBottomOf="@+id/editTextMentorName" />
@@ -76,8 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15sp"
-        android:text="Add A New Mentor"
-        android:textSize="25dp"
+        android:text="@string/add_a_new_mentor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -88,13 +91,14 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <Button
         android:id="@+id/addMentorSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:layout_marginStart="75sp"
         app:layout_constraintStart_toEndOf="@+id/editTextMentorEmailAddress"
         app:layout_constraintTop_toTopOf="@+id/editTextMentorEmailAddress" />

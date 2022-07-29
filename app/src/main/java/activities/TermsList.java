@@ -1,14 +1,13 @@
 package activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.wittenPortfolio.R;
 
@@ -20,7 +19,6 @@ import database.AppDatabase;
 import entities.Term;
 
 public class TermsList extends AppCompatActivity implements TermListAdapter.OnTermListener {
-    private TermListAdapter termListAdapter;
     List<Term> terms;
 
     @Override
@@ -39,7 +37,7 @@ public class TermsList extends AppCompatActivity implements TermListAdapter.OnTe
         rcView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcView.addItemDecoration(decoration);
-        termListAdapter = new TermListAdapter(this, terms, this);
+        TermListAdapter termListAdapter = new TermListAdapter(this, terms, this);
         rcView.setAdapter(termListAdapter);
     }
 

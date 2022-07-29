@@ -22,7 +22,6 @@ import entities.Assessment;
  * This class implements a listener to allow the user to select a list item in the recycler view.
  */
 public class AssessmentList extends AppCompatActivity implements AssessmentListAdapter.OnAssessmentListener {
-    private AssessmentListAdapter assessmentListAdapter;
     List<Assessment> assessments;
 
     @Override
@@ -46,7 +45,7 @@ public class AssessmentList extends AppCompatActivity implements AssessmentListA
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcView.addItemDecoration(decoration);
         //Initialize the adapter.
-        assessmentListAdapter = new AssessmentListAdapter(this, assessments, this);
+        AssessmentListAdapter assessmentListAdapter = new AssessmentListAdapter(this, assessments, this);
         rcView.setAdapter(assessmentListAdapter);
 
     }

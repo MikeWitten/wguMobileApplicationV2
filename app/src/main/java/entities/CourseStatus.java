@@ -4,5 +4,5 @@ public enum CourseStatus {
     InProgress,
     Completed,
     Dropped,
-    PlanToTake;
+    PlanToTake
 }

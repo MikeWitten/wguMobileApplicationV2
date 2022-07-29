@@ -1,14 +1,13 @@
 package activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.wittenPortfolio.R;
 
@@ -23,7 +22,6 @@ import entities.Course;
  * This class implements a listener to allow the user to select a list item in the recycler view.
  */
 public class CourseList extends AppCompatActivity implements CourseListAdapter.OnCourseListener {
-    private CourseListAdapter courseListAdapter;
     List<Course> courses;
     AppDatabase db;
 
@@ -48,7 +46,7 @@ public class CourseList extends AppCompatActivity implements CourseListAdapter.O
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         courseListRecyclerView.addItemDecoration(decoration);
         //Initialize the adapter.
-        courseListAdapter = new CourseListAdapter(this, courses, this);
+        CourseListAdapter courseListAdapter = new CourseListAdapter(this, courses, this);
         courseListRecyclerView.setAdapter(courseListAdapter);
     }
 

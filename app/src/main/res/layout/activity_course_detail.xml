@@ -14,13 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/textView2625"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Course Details"
+        android:text="@string/course_details"
         android:layout_margin="15sp"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,15 +36,16 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/textView2625"
         android:layout_margin="20sp"
-        android:hint="course name"
-        />
+        android:hint="@string/course_name"
+        android:autofillHints=""
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/tvaldkfj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Course Name"
+        android:text="@string/course_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/courseNameET" />
@@ -52,7 +54,7 @@
         android:id="@+id/termNameSpnrBTN"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="termSelect"
+        android:text="@string/termselect"
         app:layout_constraintTop_toBottomOf="@id/tvaldkfj"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20sp"
@@ -63,7 +65,7 @@
         android:id="@+id/mentorNameSpnrBTN"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="mentorSelect"
+        android:text="@string/mentorselect"
         app:layout_constraintTop_toBottomOf="@id/termNameSpnrBTN"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20sp"
@@ -77,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:layout_marginStart="16dp"
-        android:text="courseStatus"
+        android:text="@string/coursestatus"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mentorNameSpnrBTN" />
@@ -88,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:onClick="toAssociatedNotes"
-        android:text="Course Notes"
+        android:text="@string/course_notes"
         app:layout_constraintStart_toEndOf="@+id/termNameSpnrBTN"
         app:layout_constraintTop_toBottomOf="@+id/tvaldkfj" />
 
@@ -97,7 +99,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:text="Set Alarm"
+        android:text="@string/set_alarm"
         app:layout_constraintStart_toEndOf="@+id/courseStatusSpnrBTN"
         app:layout_constraintTop_toBottomOf="@+id/mentorNameSpnrBTN" />
 
@@ -106,7 +108,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:text="Mentor Details"
+        android:text="@string/mentor_details"
         app:layout_constraintStart_toEndOf="@+id/mentorNameSpnrBTN"
         app:layout_constraintTop_toBottomOf="@+id/termNameSpnrBTN" />
 
@@ -116,7 +118,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:text="Delete Alarm"
+        android:text="@string/delete_alarm"
         app:layout_constraintStart_toEndOf="@id/mentorNameSpnrBTN"
         app:layout_constraintTop_toBottomOf="@id/courseNotesBTN"
         android:visibility="gone"/>
@@ -125,7 +127,7 @@
         android:id="@+id/courseStartDateSelector"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="startDate"
+        android:text="@string/start_date"
         app:layout_constraintTop_toBottomOf="@id/courseStatusSpnrBTN"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20sp"
@@ -136,7 +138,7 @@
         android:id="@+id/courseEndDateSelector"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="endDate"
+        android:text="@string/end_date"
         app:layout_constraintTop_toBottomOf="@id/courseStartDateSelector"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20sp"
@@ -148,7 +150,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Text is Broken"
+        android:text="@string/text_is_broken"
         android:textSize="20sp"
         android:gravity="center"/>
 
@@ -156,7 +158,7 @@
         android:id="@+id/editCourseBTN"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Edit Course"
+        android:text="@string/edit_course"
         app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
         app:layout_constraintTop_toBottomOf="@+id/courseStartDateSelector"
         android:layout_margin="20sp"/>
@@ -165,7 +167,7 @@
         android:id="@+id/invisibleSaveChangesBTN"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Save Changes"
+        android:text="@string/save_changes"
         app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
         app:layout_constraintTop_toBottomOf="@+id/courseStartDateSelector"
         android:layout_margin="20sp"
@@ -176,7 +178,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintStart_toEndOf="@+id/courseEndDateSelector"
         app:layout_constraintTop_toBottomOf="@+id/courseEndDateSelector"
         android:visibility="gone"/>
@@ -185,7 +187,7 @@
         android:id="@+id/deleteCourseBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete Course"
+        android:text="@string/delete_course"
         app:layout_constraintBottom_toTopOf="@+id/courseAlarmNotificationTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

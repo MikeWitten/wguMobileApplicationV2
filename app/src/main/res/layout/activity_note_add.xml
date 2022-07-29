@@ -14,14 +14,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <TextView
         android:id="@+id/addNotePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Add Note"
+        android:text="@string/add_note"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +36,9 @@
         app:layout_constraintTop_toBottomOf="@id/addNotePage"
         android:layout_margin="20sp"
         android:gravity="center"
-        android:hint="Add a Title"
-        />
+        android:hint="@string/add_a_title"
+        android:autofillHints=""
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/noteContentET"
@@ -44,10 +46,11 @@
         android:layout_height="200dp"
         android:layout_margin="20sp"
         android:gravity="top"
-        android:hint="Type Your Note Here"
+        android:hint="@string/type_your_note_here"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@id/noteTitleET"
-         />
+        android:autofillHints=""
+        android:inputType="text" />
 
     <Button
         android:id="@+id/saveNoteBTN"
@@ -56,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteContentET"
         android:layout_margin="20sp"
-        android:text="Save Note"/>
+        android:text="@string/save_note"/>
 
     <Button
         android:id="@+id/cancelNote"
@@ -65,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteContentET"
         android:layout_margin="20sp"
-        android:text="Cancel"/>
+        android:text="@string/cancel"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

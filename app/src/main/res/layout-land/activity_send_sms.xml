@@ -13,23 +13,26 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <EditText
         android:id="@+id/getPhoneNumber"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:labelFor="@id/phonePrompt"
         android:gravity="center"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/phonePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Phone Number"
+        android:text="@string/enter_phone_number"
         app:layout_constraintEnd_toEndOf="@+id/getPhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/getPhoneNumber"
         app:layout_constraintTop_toBottomOf="@id/getPhoneNumber" />
@@ -40,7 +43,7 @@
         android:layout_height="0dp"
         android:layout_margin="15sp"
         android:gravity="top"
-        android:hint="your message"
+        android:hint="@string/your_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancelSMSBTN"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +54,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Send Text"
+        android:text="@string/send_text"
         app:layout_constraintBottom_toTopOf="@+id/cancelSMSBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -61,7 +64,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintBottom_toTopOf="@+id/deleteNote"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -70,7 +73,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Delete Note"
+        android:text="@string/delete_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

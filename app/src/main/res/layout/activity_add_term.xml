@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <EditText
         android:id="@+id/termNameInput"
@@ -23,10 +24,11 @@
         android:layout_height="50sp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="Enter a Term Name"
+        android:hint="@string/enter_a_term_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView"
-        />
+        android:autofillHints=""
+        android:inputType="text" />
 
     <Button
         android:id="@+id/termStartSelectBTN"
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Select Start Date"
+        android:text="@string/select_start_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/termNameInput"
         />
@@ -44,7 +46,7 @@
         android:layout_height="50sp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Start Date"
+        android:text="@string/start_date"
         app:layout_constraintTop_toBottomOf="@id/termNameInput"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -55,8 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Select End Date"
-
+        android:text="@string/select_end_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/termStartSelectBTN"
         />
@@ -66,7 +67,7 @@
         android:layout_height="50sp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="End Date"
+        android:text="@string/end_date"
         app:layout_constraintTop_toBottomOf="@id/termStartSelectBTN"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -77,8 +78,7 @@
         android:layout_height="50sp"
         app:layout_constraintTop_toBottomOf="@id/termEndSelectBTN"
         android:layout_margin="50sp"
-
-        android:text="Add Term"
+        android:text="@string/add_term"
         />
 
 

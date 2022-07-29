@@ -13,7 +13,8 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseListRecyclerView"
@@ -31,7 +32,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:clickable="true"
-        android:contentDescription="Add a Course"
+        android:contentDescription="@string/add_a_course"
         android:onClick="toAddCourseView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

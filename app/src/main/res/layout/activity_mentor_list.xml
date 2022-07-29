@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mentorListRecyclerView"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:clickable="true"
-        android:contentDescription="Add a Mentor"
+        android:contentDescription="@string/add_a_mentor"
         android:onClick="toAddMentor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"

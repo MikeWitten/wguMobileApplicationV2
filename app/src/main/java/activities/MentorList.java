@@ -20,7 +20,6 @@ import entities.Mentor;
 
 //This class implements a listener to allow the user to select a list item in the recycler view.
 public class MentorList extends AppCompatActivity implements MentorListAdapter.OnMentorListener {
-    private MentorListAdapter mentorListAdapter;
     AppDatabase db;
     List<Mentor> mentorList;
     Mentor selectedMentor;
@@ -45,7 +44,7 @@ public class MentorList extends AppCompatActivity implements MentorListAdapter.O
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         mentorListRecyclerView.addItemDecoration(decoration);
         //Connect the recycler view to the adapter and listener
-        mentorListAdapter = new MentorListAdapter(this, mentorList, this);
+        MentorListAdapter mentorListAdapter = new MentorListAdapter(this, mentorList, this);
         mentorListRecyclerView.setAdapter(mentorListAdapter);
     }
 

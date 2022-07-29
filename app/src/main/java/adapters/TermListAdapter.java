@@ -18,9 +18,9 @@ import entities.Term;
 
 public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.termViewHolder> {
 
-    private Context context;
-    private List<Term> termsList;
-    private OnTermListener mOnTermListener;
+    private final Context context;
+    private final List<Term> termsList;
+    private final OnTermListener mOnTermListener;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     public TermListAdapter(Context context, List<Term> termsList, OnTermListener mOnTermListener) {
@@ -49,7 +49,7 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.termVi
         return this.termsList.size();
     }
 
-    public class termViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class termViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView columnTermName;
         TextView columnStartDate;
         TextView columnEndDate;

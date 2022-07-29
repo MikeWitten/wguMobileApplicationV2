@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.wittenPortfolio.R;
 
-import java.lang.annotation.Target;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -46,6 +45,7 @@ public class AddAssessmentActivity extends AppCompatActivity {
     EditText title;
     Calendar myCalendar;
     DatePickerDialog picker;
+    DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
 
     //
@@ -73,48 +73,36 @@ public class AddAssessmentActivity extends AppCompatActivity {
     private void endDatePicker() {
         endSelectButton = findViewById(R.id.endSelectBTN);
         //Create an on click listener.
-        endSelectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Set values for the calendar.
-                myCalendar = Calendar.getInstance();
-                int day = myCalendar.get(Calendar.DAY_OF_MONTH);
-                int month = myCalendar.get(Calendar.MONTH);
-                int year = myCalendar.get(Calendar.YEAR);
-                //Create a date-picker dialog.
-                picker = new DatePickerDialog(AddAssessmentActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        endDate = LocalDate.of(year, month + 1, dayOfMonth);
-                        endSelectButton.setText((month + 1) + "/" + dayOfMonth + "/" + year);
-                    }
-                }, year, month, day);
-                picker.show();
-            }
+        endSelectButton.setOnClickListener(v -> {
+            //Set values for the calendar.
+            myCalendar = Calendar.getInstance();
+            int day = myCalendar.get(Calendar.DAY_OF_MONTH);
+            int month = myCalendar.get(Calendar.MONTH);
+            int year = myCalendar.get(Calendar.YEAR);
+            //Create a date-picker dialog.
+            picker = new DatePickerDialog(AddAssessmentActivity.this, (view, year1, month1, dayOfMonth) -> {
+                endDate = LocalDate.of(year1, month1 + 1, dayOfMonth);
+                endSelectButton.setText(formatter.format(endDate));
+            }, year, month, day);
+            picker.show();
         });
     }
 
     private void startDatePicker() {
         startSelectButton = findViewById(R.id.startSelectBTN);
         //Set an on click listener.
-        startSelectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Set values for the calendar.
-                final Calendar calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int month = calendar.get(Calendar.MONTH);
-                int year = calendar.get(Calendar.YEAR);
-                //Create a date picker dialog.
-                picker = new DatePickerDialog(AddAssessmentActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        startDate = LocalDate.of(year, month + 1, dayOfMonth);
-                        startSelectButton.setText((month + 1) + "/" + dayOfMonth + "/" + year);
-                    }
-                }, year, month, day);
-                picker.show();
-            }
+        startSelectButton.setOnClickListener(v -> {
+            //Set values for the calendar.
+            final Calendar calendar = Calendar.getInstance();
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int month = calendar.get(Calendar.MONTH);
+            int year = calendar.get(Calendar.YEAR);
+            //Create a date picker dialog.
+            picker = new DatePickerDialog(AddAssessmentActivity.this, (view, year1, month1, dayOfMonth) -> {
+                startDate = LocalDate.of(year1, month1 + 1, dayOfMonth);
+                startSelectButton.setText(formatter.format(startDate));
+            }, year, month, day);
+            picker.show();
         });
     }
 
@@ -130,12 +118,9 @@ public class AddAssessmentActivity extends AppCompatActivity {
                     ad2.dismiss();
                 }).setTitle("Choose an Assessment Type").create();
         //Create an on click listener.
-        selectType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ad2.getListView().setSelection(selected2);
-                ad2.show();
-            }
+        selectType.setOnClickListener(v -> {
+            ad2.getListView().setSelection(selected2);
+            ad2.show();
         });
 
     }
@@ -152,12 +137,9 @@ public class AddAssessmentActivity extends AppCompatActivity {
                     ad.dismiss();
                 }).setTitle("Choose A Course").create();
         //Create an on click listener.
-        courseSelectBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ad.getListView().setSelection(selected);
-                ad.show();
-            }
+        courseSelectBTN.setOnClickListener(v -> {
+            ad.getListView().setSelection(selected);
+            ad.show();
         });
     }
 
@@ -168,9 +150,6 @@ public class AddAssessmentActivity extends AppCompatActivity {
         assTitle = title.getText().toString();
         typeName = selectType.getText().toString();
         switch (typeName.toLowerCase()) {
-            case "test":
-                assType = AssessmentType.Test;
-                break;
             case "project":
                 assType = AssessmentType.Project;
                 break;

@@ -17,9 +17,9 @@ import entities.Mentor;
 
 public class MentorListAdapter extends RecyclerView.Adapter<MentorListAdapter.mentorViewHolder> {
 
-    private Context context;
-    private List<Mentor> mentorsList;
-    private OnMentorListener mOnMentorListener;
+    private final Context context;
+    private final List<Mentor> mentorsList;
+    private final OnMentorListener mOnMentorListener;
 
     public MentorListAdapter(Context context, List<Mentor> mentorsList, OnMentorListener onMentorListener){
         this.context = context;
@@ -47,7 +47,7 @@ public class MentorListAdapter extends RecyclerView.Adapter<MentorListAdapter.me
         return this.mentorsList.size();
     }
 
-    public class mentorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class mentorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView mentorNameColumn2;
         TextView mentorPhoneColumn;
         TextView mentorEmailColumn;

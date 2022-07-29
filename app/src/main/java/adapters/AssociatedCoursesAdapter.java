@@ -23,9 +23,9 @@ import entities.Term;
 //Create an adapter for the recycler view.
 public class AssociatedCoursesAdapter extends RecyclerView.Adapter<AssociatedCoursesAdapter.associatedCoursesViewHolder> {
 
-    private Context context;
-    private List<Course> associatedCoursesList;
-    private OnAssociatedCourseListener mOnAssociatedCourseListener;
+    private final Context context;
+    private final List<Course> associatedCoursesList;
+    private final OnAssociatedCourseListener mOnAssociatedCourseListener;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
 
@@ -77,7 +77,7 @@ public class AssociatedCoursesAdapter extends RecyclerView.Adapter<AssociatedCou
         return  this.associatedCoursesList.size();
     }
 
-    public class associatedCoursesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class associatedCoursesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView courseNameColumn;
         TextView termNameColumn;
         TextView mentorNameColumn;

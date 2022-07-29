@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <EditText
         android:id="@+id/getPhoneNumber"
@@ -22,16 +23,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:inputType="phone"
+        android:labelFor="@id/phonePrompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/phonePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Phone Number"
+        android:text="@string/enter_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/getPhoneNumber" />
@@ -40,7 +43,7 @@
         android:id="@+id/currentMessage"
         android:layout_width="match_parent"
         android:layout_height="200sp"
-        android:hint="your message"
+        android:hint="@string/your_message"
         android:gravity="top"
         app:layout_constraintTop_toBottomOf="@id/phonePrompt"
         android:layout_margin="20dp"/>
@@ -53,14 +56,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/currentMessage"
         android:layout_margin="20dp"
-        android:text="Send Text"/>
+        android:text="@string/send_text"/>
 
     <Button
         android:id="@+id/cancelSMSBTN"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sendSMSBTN" />
@@ -70,7 +73,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Delete Note"
+        android:text="@string/delete_note"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cancelSMSBTN"/>

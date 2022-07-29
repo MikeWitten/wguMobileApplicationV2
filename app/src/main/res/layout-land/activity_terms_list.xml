@@ -13,7 +13,8 @@
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/termsRecyclerView"
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:clickable="true"
-        android:contentDescription="Add a term"
+        android:contentDescription="@string/add_a_term"
         android:onClick="toAddTermView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"

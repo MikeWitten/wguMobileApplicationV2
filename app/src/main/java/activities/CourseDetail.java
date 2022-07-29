@@ -2,26 +2,23 @@ package activities;
 
 import static database.Converters.fromStatusString;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.wittenPortfolio.R;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -107,49 +104,36 @@ public class CourseDetail extends AppCompatActivity {
 
     private void toMentor() {
         mentorDetails = findViewById(R.id.professorDetails);
-        mentorDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseDetail.this, MentorDetail.class);
-                intent.putExtra("professor", currentMentor);
-                startActivity(intent);
-            }
+        mentorDetails.setOnClickListener(v -> {
+            Intent intent = new Intent(CourseDetail.this, MentorDetail.class);
+            intent.putExtra("professor", currentMentor);
+            startActivity(intent);
         });
     }
 
     private void setUpDeleteButton() {
         deleteCourseBtn = findViewById(R.id.deleteCourseBTN);
-        deleteCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Confirm the delete with the user.
-                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(CourseDetail.this);
-                builder.setCancelable(true);
-                builder.setTitle("Are You Sure?");
-                builder.setMessage("Would you like to delete this course?");
-                builder.setPositiveButton("Confirm",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Delete the course.
-                                db.courseDAO().delete(course);
-                                //Confirm with user
-                                Toast.makeText(CourseDetail.this, "Course Deleted", Toast.LENGTH_SHORT).show();
-                                //Navigate to the courses list.
-                                Intent intent = new Intent(CourseDetail.this, CourseList.class);
-                                startActivity(intent);
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Return without doing anything.
-                        return;
-                    }
-                });
-                androidx.appcompat.app.AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        deleteCourseBtn.setOnClickListener(v -> {
+            //Confirm the delete with the user.
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(CourseDetail.this);
+            builder.setCancelable(true);
+            builder.setTitle("Are You Sure?");
+            builder.setMessage("Would you like to delete this course?");
+            builder.setPositiveButton("Confirm",
+                    (dialog, which) -> {
+                        //Delete the course.
+                        db.courseDAO().delete(course);
+                        //Confirm with user
+                        Toast.makeText(CourseDetail.this, "Course Deleted", Toast.LENGTH_SHORT).show();
+                        //Navigate to the courses list.
+                        Intent intent = new Intent(CourseDetail.this, CourseList.class);
+                        startActivity(intent);
+                    });
+            builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                //Return without doing anything.
+            });
+            androidx.appcompat.app.AlertDialog dialog = builder.create();
+            dialog.show();
         });
 
     }
@@ -159,83 +143,67 @@ public class CourseDetail extends AppCompatActivity {
         cancelChangesBtn = findViewById(R.id.invisibleCancelChangesBTN);
         saveChangesBtn = findViewById(R.id.invisibleSaveChangesBTN);
         //Set an on click listener
-        editCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editCourseBtn.setVisibility(View.GONE);
-                cancelChangesBtn.setVisibility(View.VISIBLE);
-                //Create a cancel button.
-                setUpCancelButton();
-                saveChangesBtn.setVisibility(View.VISIBLE);
-                //Set up the save feature
-                setUpSaveFeature();
+        editCourseBtn.setOnClickListener(v -> {
+            editCourseBtn.setVisibility(View.GONE);
+            cancelChangesBtn.setVisibility(View.VISIBLE);
+            //Create a cancel button.
+            setUpCancelButton();
+            saveChangesBtn.setVisibility(View.VISIBLE);
+            //Set up the save feature
+            setUpSaveFeature();
 
-                //Allow the user to change attributes
-                courseNameET.setEnabled(true);
-                termNameSpnrBtn.setClickable(true);
-                mentorNameSpnrBtn.setClickable(true);
-                courseStatusSpnrBtn.setClickable(true);
-                courseStartDateSelector.setClickable(true);
-                courseEndDateSelector.setClickable(true);
+            //Allow the user to change attributes
+            courseNameET.setEnabled(true);
+            termNameSpnrBtn.setClickable(true);
+            mentorNameSpnrBtn.setClickable(true);
+            courseStatusSpnrBtn.setClickable(true);
+            courseStartDateSelector.setClickable(true);
+            courseEndDateSelector.setClickable(true);
 
-                setCourseAlarmBtn.setVisibility(View.GONE);
-                deleteAlarmBtn.setVisibility(View.GONE);
-                deleteCourseBtn.setVisibility(View.GONE);
-            }
+            setCourseAlarmBtn.setVisibility(View.GONE);
+            deleteAlarmBtn.setVisibility(View.GONE);
+            deleteCourseBtn.setVisibility(View.GONE);
         });
     }
 
     private void setUpSaveFeature() {
-        saveChangesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Confirm the update with the user.
-                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(CourseDetail.this);
-                builder.setCancelable(true);
-                builder.setTitle("Are You Sure?");
-                builder.setMessage("Would you like to update this course?");
-                builder.setPositiveButton("Confirm",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Get new course name
-                                if(courseNameET.getText().toString().isEmpty()){
-                                    newCourseName = "The course that must not be named";
-                                }
-                                newCourseName = courseNameET.getText().toString();
-                                //Create the new course.
-                                newCourse = new Course(courseID, newTermID, newMentorID,
-                                        newCourseName, newStartDate, newEndDate, newStatus);
-                                //Add the new course to the database.
-                                db.courseDAO().update(newCourse);
-                                Toast.makeText(CourseDetail.this, "Course updated.", Toast.LENGTH_SHORT).show();
-                                //Navigate to the courses list.
-                                Intent intent = new Intent(CourseDetail.this, CourseList.class);
-                                startActivity(intent);
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Return without doing anything.
-                        return;
-                    }
-                });
-                androidx.appcompat.app.AlertDialog dialog = builder.create();
-                dialog.show();
+        saveChangesBtn.setOnClickListener(v -> {
+            //Confirm the update with the user.
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(CourseDetail.this);
+            builder.setCancelable(true);
+            builder.setTitle("Are You Sure?");
+            builder.setMessage("Would you like to update this course?");
+            builder.setPositiveButton("Confirm",
+                    (dialog, which) -> {
+                        //Get new course name
+                        if(courseNameET.getText().toString().isEmpty()){
+                            newCourseName = "The course that must not be named";
+                        }
+                        newCourseName = courseNameET.getText().toString();
+                        //Create the new course.
+                        newCourse = new Course(courseID, newTermID, newMentorID,
+                                newCourseName, newStartDate, newEndDate, newStatus);
+                        //Add the new course to the database.
+                        db.courseDAO().update(newCourse);
+                        Toast.makeText(CourseDetail.this, "Course updated.", Toast.LENGTH_SHORT).show();
+                        //Navigate to the courses list.
+                        Intent intent = new Intent(CourseDetail.this, CourseList.class);
+                        startActivity(intent);
+                    });
+            builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                //Return without doing anything.
+            });
+            androidx.appcompat.app.AlertDialog dialog = builder.create();
+            dialog.show();
 
-            }
         });
     }
 
     private void setUpCancelButton() {
-        cancelChangesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseDetail.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
-            }
+        cancelChangesBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(CourseDetail.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 
@@ -249,21 +217,21 @@ public class CourseDetail extends AppCompatActivity {
         alarmSet = PendingIntent.getBroadcast(this,
                 courseID + 1000,
                 alarmIntent,
-                PendingIntent.FLAG_NO_CREATE) != null;
+                PendingIntent.FLAG_NO_CREATE | PendingIntent.FLAG_IMMUTABLE) != null;
         if(alarmSet){
             //Show cancel button instead of set button.
             deleteAlarmBtn.setVisibility(View.VISIBLE);
             setCourseAlarmBtn.setVisibility(View.GONE);
-            alarmNotificationTV.setText("An alarm has been set.");
+            alarmNotificationTV.setText(R.string.AlarmSet);
             //Set pending intents to send on to the cancel button.
             pendingIntentStart = PendingIntent.getBroadcast(this,
                     courseID + 1000,
                     alarmIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             pendingIntentEnd = PendingIntent.getBroadcast(this,
                     courseID + 5000,
                     alarmIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             //Pass the pending intents
             deleteAlarms(pendingIntentStart, pendingIntentEnd);
         } else{
@@ -273,17 +241,14 @@ public class CourseDetail extends AppCompatActivity {
     }
 
     private void deleteAlarms(PendingIntent pendingIntentStart, PendingIntent pendingIntentEnd) {
-        deleteAlarmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Cancel alarms and pending intents.
-                alarmManager.cancel(pendingIntentStart);
-                alarmManager.cancel(pendingIntentEnd);
-                pendingIntentStart.cancel();
-                pendingIntentEnd.cancel();
-                //Go back to the alarm check to ensure successful deletion.
-                alarmCheck();
-            }
+        deleteAlarmBtn.setOnClickListener(v -> {
+            //Cancel alarms and pending intents.
+            alarmManager.cancel(pendingIntentStart);
+            alarmManager.cancel(pendingIntentEnd);
+            pendingIntentStart.cancel();
+            pendingIntentEnd.cancel();
+            //Go back to the alarm check to ensure successful deletion.
+            alarmCheck();
         });
     }
 
@@ -291,28 +256,25 @@ public class CourseDetail extends AppCompatActivity {
         //Ensure the correct button is displayed.
         setCourseAlarmBtn.setVisibility(View.VISIBLE);
         deleteAlarmBtn.setVisibility(View.GONE);
-        alarmNotificationTV.setText("Alarm turned off.");
+        alarmNotificationTV.setText(R.string.AlarmOff);
         //Set an on-click listener
-        setCourseAlarmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Set Calender for start date alarm
-                int year = course.startDate.getYear();
-                int month = course.startDate.getMonthValue();
-                int day = course.startDate.getDayOfMonth();
-                int hour = 6;
-                int minute = 0;
-                Calendar startCal = Calendar.getInstance();
-                startCal.set(year, month - 1, day, hour, minute);
-                //Set Calender for end date alarm
-                int endY = course.endDate.getYear();
-                int endM = course.endDate.getMonthValue();
-                int endD = course.endDate.getDayOfMonth();
-                Calendar endCal = Calendar.getInstance();
-                endCal.set(endY, endM - 1, endD, hour, minute);
-                //Pass the Long value of the calendars to the 'setAlarm' method.
-                setAlarm(startCal.getTimeInMillis(), endCal.getTimeInMillis());
-            }
+        setCourseAlarmBtn.setOnClickListener(v -> {
+            //Set Calender for start date alarm
+            int year = course.startDate.getYear();
+            int month = course.startDate.getMonthValue();
+            int day = course.startDate.getDayOfMonth();
+            int hour = 6;
+            int minute = 0;
+            Calendar startCal = Calendar.getInstance();
+            startCal.set(year, month - 1, day, hour, minute);
+            //Set Calender for end date alarm
+            int endY = course.endDate.getYear();
+            int endM = course.endDate.getMonthValue();
+            int endD = course.endDate.getDayOfMonth();
+            Calendar endCal = Calendar.getInstance();
+            endCal.set(endY, endM - 1, endD, hour, minute);
+            //Pass the Long value of the calendars to the 'setAlarm' method.
+            setAlarm(startCal.getTimeInMillis(), endCal.getTimeInMillis());
         });
     }
 
@@ -321,13 +283,13 @@ public class CourseDetail extends AppCompatActivity {
         pendingIntentStart = PendingIntent.getBroadcast(this,
                 courseID + 1000,
                 alarmIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, startTimeInMillis, pendingIntentStart);
         //Create an end date alarm with a unique ID that matches the course ID plus 5000.
         pendingIntentEnd = PendingIntent.getBroadcast(this,
                 courseID + 5000,
                 alarmIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, endTimeInMillis1, pendingIntentEnd);
         //Confirm the alarm action
         Toast.makeText(this, "Alarms have been set for 6AM on the Start and End Dates", Toast.LENGTH_SHORT).show();
@@ -359,24 +321,18 @@ public class CourseDetail extends AppCompatActivity {
         courseEndDateSelector.setText(formatter.format(course.endDate));
         newEndDate = course.endDate;
         //Set an on click listener
-        courseEndDateSelector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cal2 = Calendar.getInstance();
-                int day = cal2.get(Calendar.DAY_OF_MONTH);
-                int month = cal2.get(Calendar.MONTH);
-                int year = cal2.get(Calendar.YEAR);
-                //Create a dialog.
-                DatePickerDialog end = new DatePickerDialog(CourseDetail.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                newEndDate = LocalDate.of(year, (month + 1), dayOfMonth);
-                                courseEndDateSelector.setText(formatter.format(newEndDate));
-                            }
-                        },year, month, day);
-                end.show();
-            }
+        courseEndDateSelector.setOnClickListener(v -> {
+            final Calendar cal2 = Calendar.getInstance();
+            int day = cal2.get(Calendar.DAY_OF_MONTH);
+            int month = cal2.get(Calendar.MONTH);
+            int year = cal2.get(Calendar.YEAR);
+            //Create a dialog.
+            DatePickerDialog end = new DatePickerDialog(CourseDetail.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        newEndDate = LocalDate.of(year1, (month1 + 1), dayOfMonth);
+                        courseEndDateSelector.setText(formatter.format(newEndDate));
+                    },year, month, day);
+            end.show();
         });
         courseEndDateSelector.setClickable(false);
     }
@@ -386,25 +342,19 @@ public class CourseDetail extends AppCompatActivity {
         courseStartDateSelector.setText(formatter.format(course.startDate));
         newStartDate = course.startDate;
         //Set an on click listener
-        courseStartDateSelector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cal1 = Calendar.getInstance();
-                int day = cal1.get(Calendar.DAY_OF_MONTH);
-                int month = cal1.get(Calendar.MONTH);
-                int year = cal1.get(Calendar.YEAR);
-                //Create a dialog
-                DatePickerDialog start = new DatePickerDialog(CourseDetail.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                newStartDate = LocalDate.of(year,(month + 1), dayOfMonth);
-                                courseStartDateSelector.setText(formatter.format(newStartDate));
-                            }
-                        }, year, month, day);
-                start.show();
-                }
-        });
+        courseStartDateSelector.setOnClickListener(v -> {
+            final Calendar cal1 = Calendar.getInstance();
+            int day = cal1.get(Calendar.DAY_OF_MONTH);
+            int month = cal1.get(Calendar.MONTH);
+            int year = cal1.get(Calendar.YEAR);
+            //Create a dialog
+            DatePickerDialog start = new DatePickerDialog(CourseDetail.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        newStartDate = LocalDate.of(year1,(month1 + 1), dayOfMonth);
+                        courseStartDateSelector.setText(formatter.format(newStartDate));
+                    }, year, month, day);
+            start.show();
+            });
         courseStartDateSelector.setClickable(false);
     }
 
@@ -453,7 +403,7 @@ public class CourseDetail extends AppCompatActivity {
                     selected = which;
                     //Find the selected mentor and set it to current mentor.
                     for (Mentor m: mentorList){
-                        if(mentorNames[which].toString().equalsIgnoreCase(m.name)){
+                        if(mentorNames[which].equalsIgnoreCase(m.name)){
                             currentMentor = m;
                             newMentorID = m.id;
                         }
@@ -490,7 +440,7 @@ public class CourseDetail extends AppCompatActivity {
                     selected = which;
                     //Find the selected term and set it to the current term.
                     for (Term t: termList){
-                        if(termNames[which].toString().equalsIgnoreCase(t.termName)){
+                        if(termNames[which].equalsIgnoreCase(t.termName)){
                             currentTerm = t;
                             newTermID = currentTerm.termID;
                         }

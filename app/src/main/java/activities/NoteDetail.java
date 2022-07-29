@@ -1,17 +1,13 @@
 package activities;
 
-import androidx.appcompat.app.AlertDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wittenPortfolio.R;
@@ -19,7 +15,6 @@ import com.wittenPortfolio.R;
 import java.util.List;
 import java.util.Objects;
 
-import adapters.AssessmentListAdapter;
 import adapters.NoteListAdapter;
 import database.AppDatabase;
 import entities.Course;
@@ -29,7 +24,6 @@ import entities.Note;
  * This class implements a listener to allow the user to select a list item in the recycler view.
  */
 public class NoteDetail extends AppCompatActivity implements NoteListAdapter.OnNoteListener {
-    private NoteListAdapter noteListAdapter;
     List<Note> notes;
     Course course;
 
@@ -54,25 +48,19 @@ public class NoteDetail extends AppCompatActivity implements NoteListAdapter.OnN
 
     private void backButton() {
         Button backButton = findViewById(R.id.backToCourseBTN);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NoteDetail.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
-            }
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(NoteDetail.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 
     private void addNoteButton() {
         FloatingActionButton addButton = findViewById(R.id.addNoteFloatingBTN);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NoteDetail.this, NoteAdd.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
-            }
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(NoteDetail.this, NoteAdd.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 
@@ -84,7 +72,7 @@ public class NoteDetail extends AppCompatActivity implements NoteListAdapter.OnN
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcView.addItemDecoration(decoration);
         //Initialize the adapter.
-        noteListAdapter = new NoteListAdapter(this, notes, this);
+        NoteListAdapter noteListAdapter = new NoteListAdapter(this, notes, this);
         rcView.setAdapter(noteListAdapter);
     }
 

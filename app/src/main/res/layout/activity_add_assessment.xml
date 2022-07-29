@@ -15,25 +15,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <EditText
         android:id="@+id/assessmentTitleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Enter Assessment title"
+        android:inputType="text"
+        android:hint="@string/enter_assessment_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/courseSelectBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/assessmentTitleInput"
-        android:text="Select Your Course"
+        android:text="@string/select_your_course"
         android:textColor="@color/black"
         android:gravity="center"
         style="?spinnerStyle"
@@ -47,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Select Assessment Type"
+        android:text="@string/select_assessment_type"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/courseSelectBTN"
         tools:layout_editor_absoluteX="10dp" />
@@ -59,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Select Start Date"
+        android:text="@string/select_start_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/typeSelectBTN"
@@ -71,7 +74,7 @@
         android:layout_height="50sp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Start Date"
+        android:text="@string/start_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/startSelectBTN"
         app:layout_constraintTop_toBottomOf="@id/typeSelectBTN" />
@@ -83,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Select End Date"
+        android:text="@string/select_end_date"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/startSelectBTN"
@@ -95,7 +98,7 @@
         android:layout_height="50sp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="End Date"
+        android:text="@string/end_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/endSelectBTN"
         app:layout_constraintTop_toBottomOf="@id/startSelectBTN" />
@@ -105,13 +108,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/endSelectBTN"
-        android:text="Add Assessment"
+        android:text="@string/add_assessment"
         android:layout_margin="75dp"
         android:onClick="addAssessmentToDatabase"
         />
-
-
-         />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hogwarts_logo" />
+        app:srcCompat="@drawable/hogwarts_logo"
+        android:contentDescription="@string/hogwartslogo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/assessmentRecyclerView"
@@ -32,7 +33,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:clickable="true"
-        android:contentDescription="Add an Assessment"
+        android:contentDescription="@string/add_an_assessment"
         android:onClick="toAddAssessmentView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

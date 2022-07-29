@@ -1,13 +1,12 @@
 package activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.wittenPortfolio.R;
 
@@ -47,41 +46,35 @@ public class NoteAdd extends AppCompatActivity {
 
     private void saveBTN() {
         save = findViewById(R.id.saveNoteBTN);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                content = findViewById(R.id.noteContentET);
-                title = findViewById(R.id.noteTitleET);
-                if(title.getText().toString().isEmpty()){
-                    titleString = "Note that must not be named";
-                }
-                else titleString = title.getText().toString();
-                if(content.getText().toString().isEmpty()){
-                    Toast.makeText(NoteAdd.this, "Please add a note.... to your .... note.", Toast.LENGTH_SHORT).show();
-                    return;
-                }else contentString = content.getText().toString();
-                //Create a new Note object for this course.
-                Integer courseID = course.courseID;
-                Note newNote = new Note(null, courseID, titleString, contentString);
-                db.noteDAO().insertAll(newNote);
-                Toast.makeText(NoteAdd.this, "Note Added.", Toast.LENGTH_SHORT).show();
-                //Send user back to the course details page
-                Intent intent = new Intent(NoteAdd.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
+        save.setOnClickListener(v -> {
+            content = findViewById(R.id.noteContentET);
+            title = findViewById(R.id.noteTitleET);
+            if(title.getText().toString().isEmpty()){
+                titleString = "Note that must not be named";
             }
+            else titleString = title.getText().toString();
+            if(content.getText().toString().isEmpty()){
+                Toast.makeText(NoteAdd.this, "Please add a note.... to your .... note.", Toast.LENGTH_SHORT).show();
+                return;
+            }else contentString = content.getText().toString();
+            //Create a new Note object for this course.
+            Integer courseID = course.courseID;
+            Note newNote = new Note(null, courseID, titleString, contentString);
+            db.noteDAO().insertAll(newNote);
+            Toast.makeText(NoteAdd.this, "Note Added.", Toast.LENGTH_SHORT).show();
+            //Send user back to the course details page
+            Intent intent = new Intent(NoteAdd.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 
     private void cancelBTN() {
         cancel = findViewById(R.id.cancelNote);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NoteAdd.this, CourseDetail.class);
-                intent.putExtra("class", course);
-                startActivity(intent);
-            }
+        cancel.setOnClickListener(v -> {
+            Intent intent = new Intent(NoteAdd.this, CourseDetail.class);
+            intent.putExtra("class", course);
+            startActivity(intent);
         });
     }
 }

@@ -3,6 +3,7 @@ package entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -115,34 +116,6 @@ public class Course implements Parcelable {
         return courseID;
     }
 
-    public void setCourseID(Integer courseID) {
-        this.courseID = courseID;
-    }
-
-    public Integer getTermID() {
-        return termID;
-    }
-
-    public void setTermID(Integer termID) {
-        this.termID = termID;
-    }
-
-    public Integer getMentorID() {
-        return mentorID;
-    }
-
-    public void setMentorID(Integer mentorID) {
-        this.mentorID = mentorID;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -159,14 +132,7 @@ public class Course implements Parcelable {
         this.endDate = endDate;
     }
 
-    public CourseStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(CourseStatus status) {
-        this.status = status;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return this.courseName;

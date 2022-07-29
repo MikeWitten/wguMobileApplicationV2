@@ -22,9 +22,9 @@ import entities.Term;
 
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.coursesViewHolder> {
 
-    private Context context;
-    private List<Course> courseList;
-    private OnCourseListener mOnCourseListener;
+    private final Context context;
+    private final List<Course> courseList;
+    private final OnCourseListener mOnCourseListener;
     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     /**
@@ -81,7 +81,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.co
     /**
      * Create a view holder to pass the column information as well as the listener information.
      */
-    public class coursesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class coursesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView courseNameColumn;
         TextView termNameColumn;
         TextView mentorNameColumn;
