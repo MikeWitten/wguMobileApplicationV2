@@ -207,8 +207,8 @@ public class AssessmentDetail extends AppCompatActivity {
             int year = assessment.startDate.getYear();
             int month = assessment.startDate.getMonthValue();
             int day = assessment.startDate.getDayOfMonth();
-            int hour = 16;
-            int minute = 55;
+            int hour = 6;
+            int minute = 0;
             Calendar startCal = Calendar.getInstance();
             startCal.set(year, month - 1, day, hour, minute);
             //Set Calender for end date alarm
